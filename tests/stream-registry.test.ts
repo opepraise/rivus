@@ -314,3 +314,10 @@ describe("stream-registry paused stream withdrawal guard", () => {
     expect(result).toBeErr(Cl.uint(307));
   });
 });
+
+describe("stream-registry get-stream unknown", () => {
+  it("get-stream returns none for non-existent stream id", () => {
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream", [Cl.uint(9999)], deployer);
+    expect(result).toBeOk(Cl.none());
+  });
+});
