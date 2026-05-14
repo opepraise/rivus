@@ -217,3 +217,20 @@ describe("stream-registry helpers", () => {
     expect(result).toBeErr(Cl.uint(302));
   });
 });
+
+describe("stream-registry is-stream-active", () => {
+  it("returns true for a freshly opened stream", () => {
+    setupVault();
+    openStream();
+    const { result } = simnet.callReadOnlyFn("stream-registry", "is-stream-active", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.bool(true));
+  });
+
+  it("returns false after stream is cancelled", () => {
+    setupVault();
+    openStream();
+    simnet.callPublicFn("stream-registry", "cancel-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "is-stream-active", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.bool(false));
+  });
+});
