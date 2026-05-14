@@ -86,6 +86,14 @@ export default function Home() {
         ))}
       </section>
 
+      {/* Use cases */}
+      <section className="space-y-10">
+        <div>
+          <h2 className="text-2xl font-semibold text-white">Use cases</h2>
+          <p className="mt-2 text-[#94a3b8]">Any recurring payment can be a stream.</p>
+        </div>
+      </section>
+
       {/* Nav */}
       <nav className="flex items-center justify-between sticky top-0 z-10 bg-[#080b0f]/80 backdrop-blur-sm -mx-6 px-6 py-4 border-b border-[#1e293b]/60">
         <span className="text-lg font-semibold tracking-tight text-white flex items-center gap-2">
