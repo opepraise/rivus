@@ -80,3 +80,18 @@ describe("rvus-token", () => {
     expect(result).toBeOk(Cl.principal(wallet1));
   });
 });
+
+describe("rvus-token extended", () => {
+  it("rejects zero burn amount", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(1_000_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callPublicFn("rvus-token", "burn", [Cl.uint(0), Cl.principal(wallet1)], deployer);
+    expect(result).toBeErr(Cl.uint(103));
+  });
+
+  it("rejects zero transfer amount", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(1_000_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callPublicFn("rvus-token", "transfer",
+      [Cl.uint(0), Cl.principal(wallet1), Cl.principal(wallet2), Cl.none()], wallet1);
+    expect(result).toBeErr(Cl.uint(103));
+  });
+});
