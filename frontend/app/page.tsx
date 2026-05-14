@@ -142,7 +142,7 @@ export default function Home() {
       </section>
 
       {/* Security */}
-      <section className="rounded-xl border border-[#6366f1]/20 bg-[#0d1117] p-8 space-y-4">
+      <section className="rounded-xl border border-[#6366f1]/20 bg-[#0d1117] p-8 space-y-4 hover:border-[#6366f1]/40 transition-colors">
         <h2 className="text-xl font-semibold text-white">Security properties</h2>
         <ul className="space-y-2 text-sm text-[#94a3b8]">
           {[
