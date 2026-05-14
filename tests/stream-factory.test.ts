@@ -84,3 +84,11 @@ describe("stream-factory", () => {
     expect(result).toBeErr(Cl.uint(403));
   });
 });
+
+describe("stream-factory estimate-vesting-end", () => {
+  it("returns a future block for valid cliff and vesting", () => {
+    const { result } = simnet.callReadOnlyFn("stream-factory", "estimate-vesting-end",
+      [Cl.uint(10), Cl.uint(500)], deployer);
+    expect(result).toBeOk(Cl.uint(simnet.blockHeight + 510));
+  });
+});
