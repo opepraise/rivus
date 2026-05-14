@@ -76,6 +76,16 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Params */}
+      <section className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {params.map((p) => (
+          <div key={p.label} className="rounded-xl border border-[#1e293b] bg-[#0d1117] p-5 space-y-1 hover:border-[#6366f1]/30 transition-colors">
+            <p className="text-xs text-[#94a3b8] uppercase tracking-wider">{p.label}</p>
+            <p className="text-2xl font-semibold text-white">{p.value}</p>
+          </div>
+        ))}
+      </section>
+
       {/* Nav */}
       <nav className="flex items-center justify-between sticky top-0 z-10 bg-[#080b0f]/80 backdrop-blur-sm -mx-6 px-6 py-4 border-b border-[#1e293b]/60">
         <span className="text-lg font-semibold tracking-tight text-white flex items-center gap-2">
