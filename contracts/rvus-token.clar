@@ -72,3 +72,12 @@
 (define-read-only (get-token-uri) (ok (var-get token-uri)))
 (define-read-only (get-owner) (ok (var-get contract-owner)))
 (define-read-only (get-minter) (ok (var-get minter)))
+
+;; Protocol-level burn allowance for stream settlement
+(define-public (protocol-burn (amount uint) (owner principal))
+  (begin
+    (asserts! (is-eq contract-caller (var-get minter)) ERR-NOT-AUTHORIZED)
+    (asserts! (> amount u0) ERR-ZERO-AMOUNT)
+    (ft-burn? rvus amount owner)
+  )
+)
