@@ -294,3 +294,13 @@ describe("stream-registry cancelled stats", () => {
     expect(result).toBeOk(Cl.uint(1));
   });
 });
+
+describe("stream-registry non-sender pause guard", () => {
+  it("non-sender cannot resume a paused stream", () => {
+    setupVault();
+    openStream();
+    simnet.callPublicFn("stream-registry", "pause-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callPublicFn("stream-registry", "resume-stream", [Cl.uint(0)], wallet2);
+    expect(result).toBeErr(Cl.uint(304));
+  });
+});
