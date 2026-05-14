@@ -1,0 +1,45 @@
+[project]
+name = 'rivus'
+description = 'On-chain payment streaming protocol on Stacks'
+authors = []
+telemetry = true
+cache_dir = './.cache'
+requirements = []
+
+[contracts.sip010-trait]
+path = 'contracts/sip010-trait.clar'
+clarity_version = 3
+epoch = 3.1
+
+[contracts.rvus-token]
+path = 'contracts/rvus-token.clar'
+clarity_version = 3
+epoch = 3.1
+
+[contracts.stream-vault]
+path = 'contracts/stream-vault.clar'
+clarity_version = 3
+epoch = 3.1
+
+[contracts.stream-registry]
+path = 'contracts/stream-registry.clar'
+clarity_version = 3
+epoch = 3.1
+
+[contracts.stream-factory]
+path = 'contracts/stream-factory.clar'
+clarity_version = 3
+epoch = 3.1
+
+[repl.analysis]
+passes = ['check_checker']
+
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
+
+[repl.remote_data]
+enabled = false
+api_url = 'https://api.hiro.so'
