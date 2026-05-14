@@ -61,7 +61,7 @@ export default function Home() {
           <span className="h-1.5 w-1.5 rounded-full bg-[#6366f1]" />
           Built on Stacks · Secured by Bitcoin
         </div>
-        <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-white leading-tight max-w-2xl">
+        <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1] max-w-2xl">
           Payment streaming,<br />block by block
         </h1>
         <p className="text-lg text-[#94a3b8] max-w-xl leading-relaxed">
