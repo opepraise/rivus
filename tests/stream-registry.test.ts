@@ -284,3 +284,13 @@ describe("stream-registry recipient count", () => {
     expect(result).toBeOk(Cl.uint(2));
   });
 });
+
+describe("stream-registry cancelled stats", () => {
+  it("total cancelled increments after cancel", () => {
+    setupVault();
+    openStream();
+    simnet.callPublicFn("stream-registry", "cancel-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-total-streams-cancelled", [], deployer);
+    expect(result).toBeOk(Cl.uint(1));
+  });
+});
