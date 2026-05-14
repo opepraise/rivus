@@ -58,3 +58,12 @@ describe("stream-vault", () => {
     expect(result).toBeOk(Cl.principal(deployer));
   });
 });
+
+describe("stream-vault registry config", () => {
+  it("registry address updates after set-registry", () => {
+    simnet.callPublicFn("stream-vault", "set-registry",
+      [Cl.principal(`${deployer}.stream-registry`)], deployer);
+    const { result } = simnet.callReadOnlyFn("stream-vault", "get-registry", [], deployer);
+    expect(result).toBeOk(Cl.principal(`${deployer}.stream-registry`));
+  });
+});
