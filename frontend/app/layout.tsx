@@ -13,6 +13,10 @@ export const metadata: Metadata = {
     description: "On-chain payment streaming protocol on Stacks",
     type: "website",
   },
+  other: {
+    "talentapp:project_verification":
+      "afa161c86445028d195a2d900727f4bb39251c79dc0256f057a79d6849056d734db0c0056edf7a475a1f49c088b5e2375410c2f76355defe21dd133ead3f1e9b",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
