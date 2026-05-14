@@ -82,3 +82,7 @@
 (define-read-only (get-registry)
   (ok (var-get registry-contract))
 )
+
+(define-read-only (get-owner)
+  (ok (var-get contract-owner))
+)
