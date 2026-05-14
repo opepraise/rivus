@@ -109,6 +109,15 @@ export default function Home() {
           <h2 className="text-2xl font-semibold text-white">Stream lifecycle</h2>
           <p className="mt-2 text-[#94a3b8]">Every action is an on-chain transaction.</p>
         </div>
+        <div className="rounded-xl border border-[#1e293b] overflow-hidden">
+          {lifecycle.map((l, i) => (
+            <div key={l.step} className={`flex items-start gap-4 px-6 py-4 ${i !== lifecycle.length - 1 ? "border-b border-[#1e293b]" : ""}`}>
+              <code className="text-sm font-mono text-[#818cf8] whitespace-nowrap pt-0.5 w-48 shrink-0">{l.step}</code>
+              <span className="text-xs text-[#6366f1] bg-[#6366f1]/10 border border-[#6366f1]/20 rounded px-1.5 py-0.5 shrink-0 mt-0.5">{l.actor}</span>
+              <p className="text-sm text-[#94a3b8]">{l.desc}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Nav */}
