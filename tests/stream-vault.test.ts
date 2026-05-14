@@ -67,3 +67,10 @@ describe("stream-vault registry config", () => {
     expect(result).toBeOk(Cl.principal(`${deployer}.stream-registry`));
   });
 });
+
+describe("stream-vault utilization", () => {
+  it("get-vault-utilization returns zero when no streams are locked", () => {
+    const { result } = simnet.callReadOnlyFn("stream-vault", "get-vault-utilization", [], deployer);
+    expect(result).toBeOk(Cl.uint(0));
+  });
+});
