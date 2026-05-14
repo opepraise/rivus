@@ -92,6 +92,15 @@ export default function Home() {
           <h2 className="text-2xl font-semibold text-white">Use cases</h2>
           <p className="mt-2 text-[#94a3b8]">Any recurring payment can be a stream.</p>
         </div>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {useCases.map((u) => (
+            <div key={u.title} className="rounded-xl border border-[#1e293b] bg-[#0d1117] p-6 space-y-3 hover:border-[#6366f1]/30 transition-colors">
+              <span className="font-mono text-3xl font-bold text-[#6366f1]/40">{u.icon}</span>
+              <h3 className="text-base font-semibold text-white">{u.title}</h3>
+              <p className="text-sm text-[#94a3b8] leading-relaxed">{u.desc}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Nav */}
