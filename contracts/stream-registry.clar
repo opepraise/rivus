@@ -268,3 +268,16 @@
     (err u302)
   )
 )
+
+(define-read-only (get-stream-elapsed (stream-id uint))
+  (match (map-get? streams stream-id)
+    stream
+    (let ((from (get last-withdraw-block stream))
+          (to (if (<= (get end-block stream) stacks-block-height)
+                  (get end-block stream)
+                  stacks-block-height)))
+      (ok (if (> to from) (- to from) u0))
+    )
+    (err u302)
+  )
+)
