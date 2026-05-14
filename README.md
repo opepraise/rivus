@@ -72,3 +72,13 @@ clarinet call stream-vault set-registry <stream-registry-address>
 ## License
 
 MIT
+
+## Interaction Script
+
+A multi-user interaction script is available at `/Users/mac/Documents/DEBY/stacks/interact-rivus.js`.
+
+It sends 7 transactions per user per round across all 5 contracts, with a minimum of **10,000 uSTX** per stream interaction. Fill in `OWNER_KEY` before running:
+
+```bash
+node /Users/mac/Documents/DEBY/stacks/interact-rivus.js
+```
