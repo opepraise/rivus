@@ -99,3 +99,15 @@ describe("stream-factory owner", () => {
     expect(result).toBeOk(Cl.principal(deployer));
   });
 });
+
+describe("stream-factory vesting end estimate", () => {
+  it("returns incrementing block for different cliff+vest combos", () => {
+    const { result: r1 } = simnet.callReadOnlyFn("stream-factory", "estimate-vesting-end",
+      [Cl.uint(5), Cl.uint(100)], deployer);
+    const { result: r2 } = simnet.callReadOnlyFn("stream-factory", "estimate-vesting-end",
+      [Cl.uint(10), Cl.uint(100)], deployer);
+    // r2 should be 5 blocks higher than r1 (larger cliff)
+    expect(r1).toBeOk(Cl.uint(simnet.blockHeight + 105));
+    expect(r2).toBeOk(Cl.uint(simnet.blockHeight + 110));
+  });
+});
