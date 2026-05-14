@@ -7,7 +7,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: "Rivus — On-Chain Payment Streaming on Stacks",
-  description: "Open a stream, and the recipient earns STX continuously — per block. Built for payroll, vesting, and subscriptions on Stacks.",
+  description: "Open a stream and the recipient earns STX continuously — per block. Built for payroll, vesting, and subscriptions on Stacks.",
   openGraph: {
     title: "Rivus",
     description: "On-chain payment streaming protocol on Stacks",
