@@ -249,3 +249,17 @@ describe("stream-registry protocol stats", () => {
     }));
   });
 });
+
+describe("stream-registry elapsed time", () => {
+  it("get-stream-elapsed returns zero before stream start block", () => {
+    setupVault();
+    openStream();
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-elapsed", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(0));
+  });
+
+  it("get-stream-elapsed returns error for unknown stream", () => {
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-elapsed", [Cl.uint(999)], deployer);
+    expect(result).toBeErr(Cl.uint(302));
+  });
+});
