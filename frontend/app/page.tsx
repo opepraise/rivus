@@ -29,10 +29,3 @@ const lifecycle = [
   { step: "resume-stream",        actor: "sender",    desc: "Restart accrual from current block" },
   { step: "cancel-stream",        actor: "sender",    desc: "Refund unstreamed portion, pay earned" },
 ];
-
-export default function Home() {
-  return (
-    <main className="max-w-5xl mx-auto px-6 pb-24 space-y-24">
-    </main>
-  );
-}
