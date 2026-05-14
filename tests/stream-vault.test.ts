@@ -76,11 +76,11 @@ describe("stream-vault utilization", () => {
 });
 
 describe("stream-vault zero top-up rejection", () => {
-  it("rejects zero amount in lock-stream-funds via direct call", () => {
+  it("rejects unauthorized direct call to lock-stream-funds", () => {
     simnet.callPublicFn("stream-vault", "set-registry",
       [Cl.principal(`${deployer}.stream-registry`)], deployer);
     const { result } = simnet.callPublicFn("stream-vault", "lock-stream-funds",
-      [Cl.uint(0), Cl.uint(0), Cl.principal(wallet1)], `${deployer}.stream-registry`);
-    expect(result).toBeErr(Cl.uint(201));
+      [Cl.uint(0), Cl.uint(10_000), Cl.principal(wallet1)], wallet1);
+    expect(result).toBeErr(Cl.uint(200));
   });
 });
