@@ -263,3 +263,13 @@ describe("stream-registry elapsed time", () => {
     expect(result).toBeErr(Cl.uint(302));
   });
 });
+
+describe("stream-registry top-up below minimum", () => {
+  it("rejects top-up below minimum amount", () => {
+    setupVault();
+    openStream();
+    const { result } = simnet.callPublicFn("stream-registry", "top-up-stream",
+      [Cl.uint(0), Cl.uint(9_999)], wallet1);
+    expect(result).toBeErr(Cl.uint(311));
+  });
+});
