@@ -41,6 +41,24 @@ function GitHubIcon({ className = "" }: { className?: string }) {
 export default function Home() {
   return (
     <main className="max-w-5xl mx-auto px-6 pb-24 space-y-24">
+
+      {/* Nav */}
+      <nav className="flex items-center justify-between sticky top-0 z-10 bg-[#080b0f]/80 backdrop-blur-sm -mx-6 px-6 py-4 border-b border-[#1e293b]/60">
+        <span className="text-lg font-semibold tracking-tight text-white flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-[#6366f1]" />
+          Rivus
+        </span>
+        <a
+          href="https://github.com/opepraise/rivus"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-sm text-[#94a3b8] hover:text-white transition-colors"
+        >
+          <GitHubIcon />
+          View on GitHub
+        </a>
+      </nav>
+
     </main>
   );
 }
