@@ -155,6 +155,14 @@ export default function Home() {
         </ul>
       </section>
 
+      {/* Footer */}
+      <footer className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-[#1e293b] pt-8 text-sm text-[#94a3b8]">
+        <span>Rivus — open source, MIT license</span>
+        <a href="https://github.com/opepraise/rivus" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+          github.com/opepraise/rivus
+        </a>
+      </footer>
+
       {/* Nav */}
       <nav className="flex items-center justify-between sticky top-0 z-10 bg-[#080b0f]/80 backdrop-blur-sm -mx-6 px-6 py-4 border-b border-[#1e293b]/60">
         <span className="text-lg font-semibold tracking-tight text-white flex items-center gap-2">
