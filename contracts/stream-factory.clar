@@ -68,3 +68,7 @@
 (define-read-only (estimate-vesting-end (cliff-blocks uint) (vesting-blocks uint))
   (ok (+ stacks-block-height cliff-blocks vesting-blocks))
 )
+
+(define-read-only (get-owner)
+  (ok (var-get contract-owner))
+)
