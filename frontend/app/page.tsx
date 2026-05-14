@@ -136,6 +136,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Security */}
+      <section className="rounded-xl border border-[#6366f1]/20 bg-[#0d1117] p-8 space-y-4">
+        <h2 className="text-xl font-semibold text-white">Security properties</h2>
+        <ul className="space-y-2 text-sm text-[#94a3b8]">
+          {[
+            "All cross-contract auth uses contract-caller, not tx-sender — prevents principal spoofing",
+            "stream-vault auth check runs before vault lookup — no state read before authorization",
+            "Vault uses as-contract for safe STX custody and transfer to recipients",
+            "Minimum stream amount (10,000 uSTX) and duration (10 blocks) prevent dust spam",
+            "Pause/resume tracks paused duration so accrual is never double-counted",
+          ].map((item) => (
+            <li key={item} className="flex gap-3">
+              <span className="text-[#6366f1] mt-0.5 shrink-0">&#8594;</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </section>
+
       {/* Nav */}
       <nav className="flex items-center justify-between sticky top-0 z-10 bg-[#080b0f]/80 backdrop-blur-sm -mx-6 px-6 py-4 border-b border-[#1e293b]/60">
         <span className="text-lg font-semibold tracking-tight text-white flex items-center gap-2">
