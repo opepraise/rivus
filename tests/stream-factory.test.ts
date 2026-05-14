@@ -92,3 +92,10 @@ describe("stream-factory estimate-vesting-end", () => {
     expect(result).toBeOk(Cl.uint(simnet.blockHeight + 510));
   });
 });
+
+describe("stream-factory owner", () => {
+  it("get-owner returns deployer address", () => {
+    const { result } = simnet.callReadOnlyFn("stream-factory", "get-owner", [], deployer);
+    expect(result).toBeOk(Cl.principal(deployer));
+  });
+});
