@@ -64,3 +64,7 @@
 (define-read-only (get-total-batch-calls) (ok (var-get total-batch-calls)))
 (define-read-only (get-total-factory-streams) (ok (var-get total-factory-streams)))
 (define-read-only (get-min-stream-amount) (ok MIN_STREAM_AMOUNT))
+
+(define-read-only (estimate-vesting-end (cliff-blocks uint) (vesting-blocks uint))
+  (ok (+ stacks-block-height cliff-blocks vesting-blocks))
+)
