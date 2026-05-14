@@ -239,3 +239,7 @@
 (define-read-only (get-total-volume-streamed) (ok (var-get total-volume-streamed)))
 (define-read-only (get-next-stream-id) (ok (var-get next-stream-id)))
 (define-read-only (get-min-stream-amount) (ok MIN_STREAM_AMOUNT))
+
+(define-read-only (get-owner)
+  (ok (var-get contract-owner))
+)
