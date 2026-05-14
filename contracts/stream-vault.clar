@@ -86,3 +86,7 @@
 (define-read-only (get-owner)
   (ok (var-get contract-owner))
 )
+
+(define-read-only (get-vault-utilization)
+  (ok (var-get total-locked))
+)
