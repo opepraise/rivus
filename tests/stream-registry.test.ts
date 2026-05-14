@@ -234,3 +234,18 @@ describe("stream-registry is-stream-active", () => {
     expect(result).toBeOk(Cl.bool(false));
   });
 });
+
+describe("stream-registry protocol stats", () => {
+  it("protocol stats shows correct totals after two streams", () => {
+    setupVault();
+    openStream(wallet1, wallet2, 50_000);
+    openStream(wallet2, wallet1, 60_000);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-protocol-stats", [], deployer);
+    expect(result).toBeOk(Cl.tuple({
+      "total-opened": Cl.uint(2),
+      "total-cancelled": Cl.uint(0),
+      "total-volume": Cl.uint(110_000),
+      "next-id": Cl.uint(2),
+    }));
+  });
+});
