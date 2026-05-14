@@ -196,3 +196,24 @@ describe("stream-registry", () => {
     expect(result).toBeOk(Cl.uint(110_000));
   });
 });
+
+describe("stream-registry helpers", () => {
+  it("get-stream-rate returns correct rate per block", () => {
+    setupVault();
+    openStream();
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-rate", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(STREAM_AMOUNT / DURATION));
+  });
+
+  it("get-stream-remaining returns total amount before any withdrawal", () => {
+    setupVault();
+    openStream();
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-remaining", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(STREAM_AMOUNT));
+  });
+
+  it("get-stream-rate returns error for unknown stream", () => {
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-rate", [Cl.uint(999)], deployer);
+    expect(result).toBeErr(Cl.uint(302));
+  });
+});
