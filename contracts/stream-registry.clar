@@ -281,3 +281,12 @@
     (err u302)
   )
 )
+
+(define-read-only (get-protocol-stats)
+  (ok {
+    total-opened: (var-get total-streams-opened),
+    total-cancelled: (var-get total-streams-cancelled),
+    total-volume: (var-get total-volume-streamed),
+    next-id: (var-get next-stream-id)
+  })
+)
