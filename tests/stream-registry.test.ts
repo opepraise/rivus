@@ -273,3 +273,14 @@ describe("stream-registry top-up below minimum", () => {
     expect(result).toBeErr(Cl.uint(311));
   });
 });
+
+describe("stream-registry recipient count", () => {
+  it("recipient count increments for each stream opened to them", () => {
+    setupVault();
+    openStream(wallet1, wallet2);
+    openStream(wallet3, wallet2, 50_000);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-recipient-stream-count",
+      [Cl.principal(wallet2)], deployer);
+    expect(result).toBeOk(Cl.uint(2));
+  });
+});
