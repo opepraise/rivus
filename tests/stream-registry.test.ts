@@ -304,3 +304,13 @@ describe("stream-registry non-sender pause guard", () => {
     expect(result).toBeErr(Cl.uint(304));
   });
 });
+
+describe("stream-registry paused stream withdrawal guard", () => {
+  it("recipient cannot withdraw from paused stream", () => {
+    setupVault();
+    openStream();
+    simnet.callPublicFn("stream-registry", "pause-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callPublicFn("stream-registry", "withdraw-from-stream", [Cl.uint(0)], wallet2);
+    expect(result).toBeErr(Cl.uint(307));
+  });
+});
