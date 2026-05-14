@@ -42,6 +42,14 @@ export default function Home() {
   return (
     <main className="max-w-5xl mx-auto px-6 pb-24 space-y-24">
 
+      {/* Hero */}
+      <section className="space-y-6 pt-16">
+        <div className="inline-flex items-center gap-2 rounded-full border border-[#6366f1]/30 bg-[#6366f1]/10 px-3 py-1 text-xs text-[#818cf8]">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#6366f1]" />
+          Built on Stacks · Secured by Bitcoin
+        </div>
+      </section>
+
       {/* Nav */}
       <nav className="flex items-center justify-between sticky top-0 z-10 bg-[#080b0f]/80 backdrop-blur-sm -mx-6 px-6 py-4 border-b border-[#1e293b]/60">
         <span className="text-lg font-semibold tracking-tight text-white flex items-center gap-2">
