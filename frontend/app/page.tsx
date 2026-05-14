@@ -42,6 +42,19 @@ export default function Home() {
   return (
     <main className="max-w-5xl mx-auto px-6 pb-24 space-y-24">
 
+      {/* Nav */}
+      <nav className="flex items-center justify-between sticky top-0 z-10 bg-[#080b0f]/80 backdrop-blur-sm -mx-6 px-6 py-4 border-b border-[#1e293b]/60">
+        <span className="text-lg font-semibold tracking-tight text-white flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-[#6366f1]" />
+          Rivus
+        </span>
+        <a href="https://github.com/opepraise/rivus" target="_blank" rel="noopener noreferrer"
+          className="flex items-center gap-2 text-sm text-[#94a3b8] hover:text-white transition-colors">
+          <GitHubIcon />
+          View on GitHub
+        </a>
+      </nav>
+
       {/* Hero */}
       <section className="space-y-6 pt-16">
         <div className="inline-flex items-center gap-2 rounded-full border border-[#6366f1]/30 bg-[#6366f1]/10 px-3 py-1 text-xs text-[#818cf8]">
@@ -56,21 +69,13 @@ export default function Home() {
           No cron jobs. No middlemen. All logic lives in Clarity smart contracts with Bitcoin finality.
         </p>
         <div className="flex gap-4 pt-2">
-          <a
-            href="https://github.com/opepraise/rivus"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black hover:bg-white/90 transition-colors"
-          >
+          <a href="https://github.com/opepraise/rivus" target="_blank" rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black hover:bg-white/90 transition-colors">
             <GitHubIcon className="text-black" />
             GitHub
           </a>
-          <a
-            href="https://github.com/opepraise/rivus/tree/main/contracts"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-lg border border-[#1e293b] px-5 py-2.5 text-sm font-medium text-[#e2e8f0] hover:border-[#94a3b8] transition-colors"
-          >
+          <a href="https://github.com/opepraise/rivus/tree/main/contracts" target="_blank" rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-lg border border-[#1e293b] px-5 py-2.5 text-sm font-medium text-[#e2e8f0] hover:border-[#94a3b8] transition-colors">
             View Contracts
           </a>
         </div>
@@ -158,27 +163,11 @@ export default function Home() {
       {/* Footer */}
       <footer className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-[#1e293b] pt-8 text-sm text-[#94a3b8]">
         <span>Rivus — open source, MIT license</span>
-        <a href="https://github.com/opepraise/rivus" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+        <a href="https://github.com/opepraise/rivus" target="_blank" rel="noopener noreferrer"
+          className="hover:text-white transition-colors">
           github.com/opepraise/rivus
         </a>
       </footer>
-
-      {/* Nav */}
-      <nav className="flex items-center justify-between sticky top-0 z-10 bg-[#080b0f]/80 backdrop-blur-sm -mx-6 px-6 py-4 border-b border-[#1e293b]/60">
-        <span className="text-lg font-semibold tracking-tight text-white flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-[#6366f1]" />
-          Rivus
-        </span>
-        <a
-          href="https://github.com/opepraise/rivus"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-sm text-[#94a3b8] hover:text-white transition-colors"
-        >
-          <GitHubIcon />
-          View on GitHub
-        </a>
-      </nav>
 
     </main>
   );
