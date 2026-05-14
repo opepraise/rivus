@@ -243,3 +243,14 @@
 (define-read-only (get-owner)
   (ok (var-get contract-owner))
 )
+
+(define-read-only (is-stream-active (stream-id uint))
+  (match (map-get? streams stream-id)
+    stream (ok (and
+      (not (get is-cancelled stream))
+      (not (get is-completed stream))
+      (<= stacks-block-height (get end-block stream))
+    ))
+    (err u302)
+  )
+)
