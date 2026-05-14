@@ -161,7 +161,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-[#1e293b] pt-8 text-sm text-[#94a3b8]">
+      <footer className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-[#1e293b] pt-10 pb-4 text-sm text-[#94a3b8]">
         <span>Rivus — open source, MIT license</span>
         <a href="https://github.com/opepraise/rivus" target="_blank" rel="noopener noreferrer"
           className="hover:text-white transition-colors">
