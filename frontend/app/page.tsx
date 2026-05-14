@@ -55,6 +55,25 @@ export default function Home() {
           Open a stream and the recipient earns STX continuously — down to the block level.
           No cron jobs. No middlemen. All logic lives in Clarity smart contracts with Bitcoin finality.
         </p>
+        <div className="flex gap-4 pt-2">
+          <a
+            href="https://github.com/opepraise/rivus"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black hover:bg-white/90 transition-colors"
+          >
+            <GitHubIcon className="text-black" />
+            GitHub
+          </a>
+          <a
+            href="https://github.com/opepraise/rivus/tree/main/contracts"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-lg border border-[#1e293b] px-5 py-2.5 text-sm font-medium text-[#e2e8f0] hover:border-[#94a3b8] transition-colors"
+          >
+            View Contracts
+          </a>
+        </div>
       </section>
 
       {/* Nav */}
