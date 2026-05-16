@@ -1,4 +1,5 @@
 import { GitHubIcon } from "./icons";
+import { Badge } from "./Badge";
 
 const GITHUB_URL = "https://github.com/opepraise/rivus";
 const CONTRACTS_URL = "https://github.com/opepraise/rivus/tree/main/contracts";
@@ -6,24 +7,25 @@ const CONTRACTS_URL = "https://github.com/opepraise/rivus/tree/main/contracts";
 export function Hero() {
   return (
     <section aria-labelledby="hero-heading" className="space-y-6 pt-16">
-      <div
-        className="inline-flex items-center gap-2 rounded-full border border-[#6366f1]/30 bg-[#6366f1]/10 px-3 py-1 text-xs text-[#818cf8]"
-        aria-label="Protocol chain: Built on Stacks, Secured by Bitcoin"
-      >
+      <Badge>
         <span className="h-1.5 w-1.5 rounded-full bg-[#6366f1]" aria-hidden="true" />
         Built on Stacks · Secured by Bitcoin
-      </div>
+      </Badge>
       <h1
         id="hero-heading"
-        className="text-5xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1] max-w-2xl"
+        className="text-5xl sm:text-6xl font-extrabold tracking-tight leading-[1.1] max-w-2xl"
       >
-        Payment streaming,<br />block by block
+        <span className="text-white">Payment streaming,</span>
+        <br />
+        <span className="bg-linear-to-r from-[#6366f1] to-[#818cf8] bg-clip-text text-transparent">
+          block by block
+        </span>
       </h1>
       <p className="text-lg text-[#94a3b8] max-w-xl leading-relaxed">
         Open a stream and the recipient earns STX continuously — down to the block level.
         No cron jobs. No middlemen. All logic lives in Clarity smart contracts with Bitcoin finality.
       </p>
-      <div className="flex gap-4 pt-2" role="group" aria-label="Primary actions">
+      <div className="flex gap-4 pt-2 flex-wrap" role="group" aria-label="Primary actions">
         <a
           href={GITHUB_URL}
           target="_blank"
