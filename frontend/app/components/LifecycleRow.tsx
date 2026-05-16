@@ -5,7 +5,13 @@ interface LifecycleRowProps {
   isLast?: boolean;
 }
 
+const actorColors: Record<string, string> = {
+  sender:    "text-[#6366f1] bg-[#6366f1]/10 border-[#6366f1]/20",
+  recipient: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+};
+
 export function LifecycleRow({ step, actor, desc, isLast = false }: LifecycleRowProps) {
+  const colorClass = actorColors[actor] ?? actorColors.sender;
   return (
     <div
       role="row"
@@ -20,7 +26,7 @@ export function LifecycleRow({ step, actor, desc, isLast = false }: LifecycleRow
       </code>
       <span
         role="cell"
-        className="text-xs text-[#6366f1] bg-[#6366f1]/10 border border-[#6366f1]/20 rounded px-1.5 py-0.5 shrink-0 mt-0.5"
+        className={`text-xs border rounded px-1.5 py-0.5 shrink-0 mt-0.5 ${colorClass}`}
         aria-label={`Actor: ${actor}`}
       >
         {actor}
