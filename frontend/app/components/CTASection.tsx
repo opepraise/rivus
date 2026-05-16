@@ -6,7 +6,7 @@ export function CTASection() {
   return (
     <section
       aria-labelledby="cta-heading"
-      className="rounded-xl border border-[#6366f1]/20 bg-gradient-to-br from-[#6366f1]/10 to-[#0d1117] p-10 text-center space-y-6"
+      className="rounded-xl border border-[#6366f1]/20 bg-linear-to-br from-[#6366f1]/10 to-[#0d1117] p-10 text-center space-y-6"
     >
       <h2 id="cta-heading" className="text-2xl font-bold text-white">
         Ready to stream payments on-chain?
