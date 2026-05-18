@@ -1,13 +1,14 @@
 import { GitHubIcon } from "./icons";
+import { Badge } from "./Badge";
 import { GITHUB_URL, CONTRACTS_URL } from "../data";
 
 export function Hero() {
   return (
     <section aria-labelledby="hero-heading" className="space-y-6 pt-16">
-      <div className="inline-flex items-center gap-2 rounded-full border border-[#6366f1]/30 bg-[#6366f1]/10 px-3 py-1 text-xs text-[#818cf8]">
+      <Badge>
         <span className="h-1.5 w-1.5 rounded-full bg-[#6366f1]" aria-hidden="true" />
         Built on Stacks · Secured by Bitcoin
-      </div>
+      </Badge>
       <h1
         id="hero-heading"
         className="text-5xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1] max-w-2xl"
