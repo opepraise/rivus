@@ -21,7 +21,11 @@ export function LifecycleRow({ step, actor, desc, isLast = false }: LifecycleRow
       </code>
       <span
         role="cell"
-        className="text-xs text-[#6366f1] bg-[#6366f1]/10 border border-[#6366f1]/20 rounded px-1.5 py-0.5 shrink-0 mt-0.5"
+        className={`text-xs rounded px-1.5 py-0.5 shrink-0 mt-0.5 border ${
+          actor === "sender"
+            ? "text-[#6366f1] bg-[#6366f1]/10 border-[#6366f1]/20"
+            : "text-[#34d399] bg-[#34d399]/10 border-[#34d399]/20"
+        }`}
       >
         {actor}
       </span>
