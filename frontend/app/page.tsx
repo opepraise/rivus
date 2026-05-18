@@ -8,6 +8,9 @@ import {
   Lifecycle,
   Contracts,
   Security,
+  CTASection,
+  OpenSourceBanner,
+  BackToTop,
   Footer,
 } from "./components";
 
@@ -28,10 +31,11 @@ export default function Home() {
         <Lifecycle />
         <Contracts />
         <Security />
-      </main>
-      <footer className="max-w-5xl mx-auto px-6">
+        <CTASection />
+        <OpenSourceBanner />
         <Footer />
-      </footer>
+      </main>
+      <BackToTop />
     </>
   );
 }
