@@ -14,6 +14,7 @@ export * from "./LifecycleRow";
 export * from "./Contracts";
 export * from "./ContractRow";
 export * from "./Security";
+export * from "./SecurityItem";
 export * from "./CTASection";
 export * from "./OpenSourceBanner";
 export * from "./Divider";
