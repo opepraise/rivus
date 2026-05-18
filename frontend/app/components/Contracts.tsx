@@ -1,17 +1,15 @@
 import { ContractRow } from "./ContractRow";
+import { SectionHeading } from "./SectionHeading";
 import { contracts } from "../data";
 
 export function Contracts() {
   return (
     <section aria-labelledby="contracts-heading" className="space-y-6">
-      <div>
-        <h2 id="contracts-heading" className="text-2xl font-semibold text-white">
-          Contracts
-        </h2>
-        <p className="mt-2 text-[#94a3b8]">
-          Five Clarity contracts on Stacks (Clarity 3, epoch 3.1).
-        </p>
-      </div>
+      <SectionHeading
+        id="contracts-heading"
+        title="Contracts"
+        subtitle="Five Clarity contracts on Stacks (Clarity 3, epoch 3.1)."
+      />
       <div
         role="table"
         aria-label="Smart contract registry"
