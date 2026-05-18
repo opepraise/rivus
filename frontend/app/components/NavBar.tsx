@@ -1,4 +1,5 @@
 import { GitHubIcon } from "./icons";
+import { LiveDot } from "./LiveDot";
 import { GITHUB_URL, navLinks } from "../data";
 
 export function NavBar() {
@@ -7,10 +8,13 @@ export function NavBar() {
       aria-label="Main navigation"
       className="flex items-center justify-between sticky top-0 z-10 bg-[#080b0f]/80 backdrop-blur-sm -mx-6 px-6 py-4 border-b border-[#1e293b]/60"
     >
-      <span className="text-lg font-semibold tracking-tight text-white flex items-center gap-2">
-        <span className="h-2 w-2 rounded-full bg-[#6366f1]" aria-hidden="true" />
+      <a
+        href="#main-content"
+        className="text-lg font-semibold tracking-tight text-white flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1] rounded"
+      >
+        <LiveDot />
         Rivus
-      </span>
+      </a>
       <ul className="hidden sm:flex items-center gap-6" role="list">
         {navLinks.map((link) => (
           <li key={link.href}>
