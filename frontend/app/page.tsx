@@ -1,5 +1,7 @@
 import {
+  SkipToContent,
   NavBar,
+  AuditBanner,
   Hero,
   ParamsGrid,
   UseCases,
@@ -12,6 +14,7 @@ import {
 export default function Home() {
   return (
     <>
+      <SkipToContent />
       <NavBar />
       <main
         id="main-content"
@@ -19,6 +22,7 @@ export default function Home() {
         tabIndex={-1}
       >
         <Hero />
+        <AuditBanner />
         <ParamsGrid />
         <UseCases />
         <Lifecycle />
