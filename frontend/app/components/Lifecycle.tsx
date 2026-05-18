@@ -1,15 +1,15 @@
 import { LifecycleRow } from "./LifecycleRow";
+import { SectionHeading } from "./SectionHeading";
 import { lifecycleSteps } from "../data";
 
 export function Lifecycle() {
   return (
     <section aria-labelledby="lifecycle-heading" className="space-y-6">
-      <div>
-        <h2 id="lifecycle-heading" className="text-2xl font-semibold text-white">
-          Stream lifecycle
-        </h2>
-        <p className="mt-2 text-[#94a3b8]">Every action is an on-chain transaction.</p>
-      </div>
+      <SectionHeading
+        id="lifecycle-heading"
+        title="Stream lifecycle"
+        subtitle="Every action is an on-chain transaction."
+      />
       <div
         role="table"
         aria-label="Stream lifecycle operations"
