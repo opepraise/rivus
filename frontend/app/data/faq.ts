@@ -44,4 +44,14 @@ export const faqItems: FAQItem[] = [
     answer:
       "Call top-up-stream with the stream ID and additional STX. The contract adds the deposit to the vault and recalculates the end block based on the new balance and existing rate.",
   },
+  {
+    question: "Is there a TypeScript SDK?",
+    answer:
+      "Yes. rivus-sdk is available on npm. It provides read-only query functions for all contracts and transaction builders for every write operation, compatible with @stacks/connect and makeContractCall.",
+  },
+  {
+    question: "Can streams be paused?",
+    answer:
+      "Yes. The sender can pause and resume a stream at any time. While paused, no STX accrues to the recipient. The contract tracks cumulative paused duration so accrual resumes accurately from the correct offset.",
+  },
 ];
