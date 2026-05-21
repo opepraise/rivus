@@ -37,4 +37,14 @@ export const roadmapItems: RoadmapItem[] = [
     desc: "On-chain voting for protocol parameter changes using RVUS token.",
     status: "planned",
   },
+  {
+    title: "TypeScript SDK",
+    desc: "rivus-sdk on npm — read-only queries and transaction builders for all registry, factory, vault, and token functions.",
+    status: "in-progress",
+  },
+  {
+    title: "Stream dashboard",
+    desc: "Web app for opening, monitoring, and managing streams with wallet integration.",
+    status: "planned",
+  },
 ];
