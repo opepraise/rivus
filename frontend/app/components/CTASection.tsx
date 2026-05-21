@@ -1,5 +1,5 @@
 import { GitHubIcon } from "./icons";
-import { GITHUB_URL } from "../data";
+import { GITHUB_URL, SDK_NPM_URL } from "../data";
 
 export function CTASection() {
   return (
@@ -26,13 +26,13 @@ export function CTASection() {
           Star on GitHub
         </a>
         <a
-          href={`${GITHUB_URL}/issues`}
+          href={SDK_NPM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Open an issue on GitHub (opens in new tab)"
+          aria-label="Install rivus-sdk from npm (opens in new tab)"
           className="flex items-center gap-2 rounded-lg border border-[#1e293b] px-6 py-2.5 text-sm font-medium text-[#e2e8f0] hover:border-[#6366f1]/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1]"
         >
-          Open an Issue
+          Install SDK
         </a>
       </div>
     </section>
