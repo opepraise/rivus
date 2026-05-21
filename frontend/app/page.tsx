@@ -4,6 +4,7 @@ import {
   AuditBanner,
   Hero,
   ParamsGrid,
+  HowItWorks,
   UseCases,
   Lifecycle,
   Contracts,
@@ -27,6 +28,7 @@ export default function Home() {
         <Hero />
         <AuditBanner />
         <ParamsGrid />
+        <HowItWorks />
         <UseCases />
         <Lifecycle />
         <Contracts />
