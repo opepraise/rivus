@@ -16,5 +16,11 @@ export function buildProtocolSchema() {
     license: "https://opensource.org/licenses/MIT",
     codeRepository: "https://github.com/opepraise/rivus",
     programmingLanguage: ["Clarity", "TypeScript"],
+    keywords: "payment streaming, stacks, bitcoin, STX, DeFi, payroll, vesting",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
   };
 }
