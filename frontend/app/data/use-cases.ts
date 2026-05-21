@@ -20,4 +20,9 @@ export const useCases: UseCase[] = [
     title: "Subscriptions",
     desc: "Protocol fees, SaaS billing, DAO memberships — any recurring payment can be a stream.",
   },
+  {
+    icon: "04",
+    title: "Grant disbursement",
+    desc: "Stream grant funding to recipients over time. Unused funds stay with the grantor if milestones are missed.",
+  },
 ];
