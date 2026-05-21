@@ -22,3 +22,5 @@ export * from "./BackToTop";
 export * from "./Footer";
 export * from "./HowItWorks";
 export * from "./HowItWorksStep";
+export * from "./Architecture";
+export * from "./ArchitectureLayer";
