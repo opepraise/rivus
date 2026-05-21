@@ -25,4 +25,9 @@ export const useCases: UseCase[] = [
     title: "Grant disbursement",
     desc: "Stream grant funding to recipients over time. Unused funds stay with the grantor if milestones are missed.",
   },
+  {
+    icon: "05",
+    title: "DAO treasury",
+    desc: "Replace lump-sum proposals with continuous disbursements. DAOs can cancel streams if contributors go inactive.",
+  },
 ];
