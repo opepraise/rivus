@@ -95,3 +95,31 @@ describe("rvus-token extended", () => {
     expect(result).toBeErr(Cl.uint(103));
   });
 });
+
+describe("rvus-token transfer-ownership", () => {
+  it("owner can transfer ownership", () => {
+    const { result } = simnet.callPublicFn("rvus-token", "transfer-ownership",
+      [Cl.principal(wallet1)], deployer);
+    expect(result).toBeOk(Cl.principal(wallet1));
+  });
+
+  it("non-owner cannot transfer ownership", () => {
+    const { result } = simnet.callPublicFn("rvus-token", "transfer-ownership",
+      [Cl.principal(wallet2)], wallet1);
+    expect(result).toBeErr(Cl.uint(100));
+  });
+});
+
+describe("rvus-token set-token-uri", () => {
+  it("owner can set token URI", () => {
+    const { result } = simnet.callPublicFn("rvus-token", "set-token-uri",
+      [Cl.some(Cl.stringUtf8("https://rivus.xyz/token.json"))], deployer);
+    expect(result).toBeOk(Cl.bool(true));
+  });
+
+  it("non-owner cannot set token URI", () => {
+    const { result } = simnet.callPublicFn("rvus-token", "set-token-uri",
+      [Cl.some(Cl.stringUtf8("https://evil.xyz/token.json"))], wallet1);
+    expect(result).toBeErr(Cl.uint(100));
+  });
+});
