@@ -4,8 +4,10 @@ export interface NavLink {
 }
 
 export const navLinks: NavLink[] = [
-  { href: "#use-cases-heading",  label: "Use cases" },
-  { href: "#lifecycle-heading",  label: "Lifecycle" },
-  { href: "#contracts-heading",  label: "Contracts" },
-  { href: "#security-heading",   label: "Security" },
+  { href: "#how-it-works-heading", label: "How it works" },
+  { href: "#use-cases-heading",    label: "Use cases" },
+  { href: "#architecture-heading", label: "Architecture" },
+  { href: "#lifecycle-heading",    label: "Lifecycle" },
+  { href: "#contracts-heading",    label: "Contracts" },
+  { href: "#security-heading",     label: "Security" },
 ];
