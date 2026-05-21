@@ -6,6 +6,7 @@ import {
   ParamsGrid,
   HowItWorks,
   UseCases,
+  Architecture,
   Lifecycle,
   Contracts,
   Security,
@@ -30,6 +31,7 @@ export default function Home() {
         <ParamsGrid />
         <HowItWorks />
         <UseCases />
+        <Architecture />
         <Lifecycle />
         <Contracts />
         <Security />
