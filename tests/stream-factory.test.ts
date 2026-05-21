@@ -106,8 +106,33 @@ describe("stream-factory vesting end estimate", () => {
       [Cl.uint(5), Cl.uint(100)], deployer);
     const { result: r2 } = simnet.callReadOnlyFn("stream-factory", "estimate-vesting-end",
       [Cl.uint(10), Cl.uint(100)], deployer);
-    // r2 should be 5 blocks higher than r1 (larger cliff)
     expect(r1).toBeOk(Cl.uint(simnet.blockHeight + 105));
     expect(r2).toBeOk(Cl.uint(simnet.blockHeight + 110));
+  });
+});
+
+describe("stream-factory estimate-vesting-cost", () => {
+  it("returns full cost breakdown for valid inputs", () => {
+    const { result } = simnet.callReadOnlyFn("stream-factory", "estimate-vesting-cost",
+      [Cl.uint(100_000), Cl.uint(10), Cl.uint(500)], deployer);
+    expect(result).toBeOk(Cl.tuple({
+      "total-amount": Cl.uint(100_000),
+      "cliff-blocks": Cl.uint(10),
+      "vesting-blocks": Cl.uint(500),
+      "rate-per-block": Cl.uint(200),
+      "total-blocks": Cl.uint(510),
+    }));
+  });
+
+  it("rejects amount below minimum", () => {
+    const { result } = simnet.callReadOnlyFn("stream-factory", "estimate-vesting-cost",
+      [Cl.uint(9_999), Cl.uint(10), Cl.uint(500)], deployer);
+    expect(result).toBeErr(Cl.uint(404));
+  });
+
+  it("rejects zero vesting blocks", () => {
+    const { result } = simnet.callReadOnlyFn("stream-factory", "estimate-vesting-cost",
+      [Cl.uint(100_000), Cl.uint(10), Cl.uint(0)], deployer);
+    expect(result).toBeErr(Cl.uint(404));
   });
 });
