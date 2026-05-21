@@ -10,4 +10,6 @@ export const params: ProtocolParam[] = [
   { label: "Blocks/Month",   value: "4,320" },
   { label: "Stream Token",   value: "STX" },
   { label: "Protocol Token", value: "RVUS" },
+  { label: "Clarity version", value: "3" },
+  { label: "Epoch",           value: "3.1" },
 ];
