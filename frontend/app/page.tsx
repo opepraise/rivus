@@ -11,6 +11,7 @@ import {
   Contracts,
   Security,
   TechStack,
+  Roadmap,
   CTASection,
   OpenSourceBanner,
   BackToTop,
@@ -37,6 +38,7 @@ export default function Home() {
         <Contracts />
         <Security />
         <TechStack />
+        <Roadmap />
         <CTASection />
         <OpenSourceBanner />
         <Footer />
