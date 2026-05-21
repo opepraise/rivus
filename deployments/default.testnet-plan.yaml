@@ -1,0 +1,46 @@
+---
+id: 1
+name: Testnet deployment
+network: testnet
+stacks-node: "https://api.testnet.hiro.so"
+bitcoin-node: "http://blockstack:blockstacksystem@bitcoin.blockstack.com:18332"
+plan:
+  batches:
+    - id: 0
+      transactions:
+        - contract-publish:
+            contract-name: sip010-trait
+            expected-sender: ST3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
+            cost: 1000
+            path: contracts/sip010-trait.clar
+            anchor-block-only: true
+            clarity-version: 3
+        - contract-publish:
+            contract-name: rvus-token
+            expected-sender: ST3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
+            cost: 3000
+            path: contracts/rvus-token.clar
+            anchor-block-only: true
+            clarity-version: 3
+        - contract-publish:
+            contract-name: stream-vault
+            expected-sender: ST3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
+            cost: 3500
+            path: contracts/stream-vault.clar
+            anchor-block-only: true
+            clarity-version: 3
+        - contract-publish:
+            contract-name: stream-registry
+            expected-sender: ST3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
+            cost: 10700
+            path: contracts/stream-registry.clar
+            anchor-block-only: true
+            clarity-version: 3
+        - contract-publish:
+            contract-name: stream-factory
+            expected-sender: ST3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
+            cost: 2800
+            path: contracts/stream-factory.clar
+            anchor-block-only: true
+            clarity-version: 3
+      epoch: "3.1"
