@@ -26,3 +26,4 @@ export * from "./Architecture";
 export * from "./ArchitectureLayer";
 export * from "./Roadmap";
 export * from "./RoadmapItem";
+export * from "./TechStack";
