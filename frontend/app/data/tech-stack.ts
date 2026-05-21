@@ -25,4 +25,14 @@ export const techStack: TechItem[] = [
     purpose: "Settlement layer providing finality to Stacks blocks",
     url: "https://bitcoin.org",
   },
+  {
+    name: "Next.js",
+    purpose: "React framework powering the Rivus landing page",
+    url: "https://nextjs.org",
+  },
+  {
+    name: "rivus-sdk",
+    purpose: "TypeScript SDK for querying and transacting with Rivus contracts",
+    url: "https://www.npmjs.com/package/rivus-sdk",
+  },
 ];
