@@ -10,4 +10,6 @@ export const navLinks: NavLink[] = [
   { href: "#lifecycle-heading",    label: "Lifecycle" },
   { href: "#contracts-heading",    label: "Contracts" },
   { href: "#security-heading",     label: "Security" },
+  { href: "#roadmap-heading",      label: "Roadmap" },
+  { href: "#faq-heading",          label: "FAQ" },
 ];
