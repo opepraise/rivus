@@ -1,0 +1,39 @@
+---
+id: 0
+name: Mainnet deployment
+network: mainnet
+stacks-node: "https://api.hiro.so"
+bitcoin-node: "http://blockstack:blockstacksystem@bitcoin.blockstack.com:8332"
+plan:
+  batches:
+    - id: 0
+      transactions:
+        - contract-publish:
+            contract-name: rvus-token
+            expected-sender: SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
+            cost: 3000
+            path: contracts/rvus-token.clar
+            anchor-block-only: true
+            clarity-version: 3
+        - contract-publish:
+            contract-name: stream-vault
+            expected-sender: SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
+            cost: 3500
+            path: contracts/stream-vault.clar
+            anchor-block-only: true
+            clarity-version: 3
+        - contract-publish:
+            contract-name: stream-registry
+            expected-sender: SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
+            cost: 10700
+            path: contracts/stream-registry.clar
+            anchor-block-only: true
+            clarity-version: 3
+        - contract-publish:
+            contract-name: stream-factory
+            expected-sender: SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
+            cost: 2800
+            path: contracts/stream-factory.clar
+            anchor-block-only: true
+            clarity-version: 3
+      epoch: "3.1"
