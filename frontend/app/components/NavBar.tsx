@@ -15,7 +15,7 @@ export function NavBar() {
         <LiveDot />
         Rivus
       </a>
-      <ul className="hidden sm:flex items-center gap-6" role="list">
+      <ul className="hidden md:flex items-center gap-6" role="list">
         {navLinks.map((link) => (
           <li key={link.href}>
             <a
