@@ -12,6 +12,7 @@ import {
   Security,
   TechStack,
   Roadmap,
+  FAQ,
   CTASection,
   OpenSourceBanner,
   BackToTop,
@@ -39,6 +40,7 @@ export default function Home() {
         <Security />
         <TechStack />
         <Roadmap />
+        <FAQ />
         <CTASection />
         <OpenSourceBanner />
         <Footer />
