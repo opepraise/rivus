@@ -84,3 +84,21 @@ describe("stream-vault zero top-up rejection", () => {
     expect(result).toBeErr(Cl.uint(200));
   });
 });
+
+describe("stream-vault direct release rejection", () => {
+  it("rejects unauthorized direct call to release-to-recipient", () => {
+    simnet.callPublicFn("stream-vault", "set-registry",
+      [Cl.principal(`${deployer}.stream-registry`)], deployer);
+    const { result } = simnet.callPublicFn("stream-vault", "release-to-recipient",
+      [Cl.uint(0), Cl.uint(10_000), Cl.principal(wallet2)], wallet1);
+    expect(result).toBeErr(Cl.uint(200));
+  });
+
+  it("rejects unauthorized direct call to refund-to-sender", () => {
+    simnet.callPublicFn("stream-vault", "set-registry",
+      [Cl.principal(`${deployer}.stream-registry`)], deployer);
+    const { result } = simnet.callPublicFn("stream-vault", "refund-to-sender",
+      [Cl.uint(0), Cl.uint(10_000), Cl.principal(wallet1)], wallet1);
+    expect(result).toBeErr(Cl.uint(200));
+  });
+});
