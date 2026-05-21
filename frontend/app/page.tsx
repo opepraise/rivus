@@ -10,6 +10,7 @@ import {
   Lifecycle,
   Contracts,
   Security,
+  TechStack,
   CTASection,
   OpenSourceBanner,
   BackToTop,
@@ -35,6 +36,7 @@ export default function Home() {
         <Lifecycle />
         <Contracts />
         <Security />
+        <TechStack />
         <CTASection />
         <OpenSourceBanner />
         <Footer />
