@@ -24,3 +24,5 @@ export * from "./HowItWorks";
 export * from "./HowItWorksStep";
 export * from "./Architecture";
 export * from "./ArchitectureLayer";
+export * from "./Roadmap";
+export * from "./RoadmapItem";
