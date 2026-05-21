@@ -1,5 +1,6 @@
 export * from "./constants";
 export * from "./roadmap";
+export * from "./tech-stack";
 export * from "./contracts";
 export * from "./architecture";
 export * from "./how-it-works";
