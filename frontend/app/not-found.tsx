@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { GitHubIcon } from "./components/icons";
 
 export const metadata: Metadata = {
-  title: "Page not found",
+  title: "Page not found — Rivus",
+  description: "The page you are looking for does not exist.",
+  robots: { index: false, follow: false },
 };
 
 export default function NotFound() {
