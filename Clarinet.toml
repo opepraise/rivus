@@ -1,7 +1,7 @@
 [project]
 name = 'rivus'
 description = 'On-chain payment streaming protocol on Stacks'
-authors = []
+authors = ['opepraise']
 telemetry = true
 cache_dir = './.cache'
 requirements = []
