@@ -290,3 +290,22 @@
     next-id: (var-get next-stream-id)
   })
 )
+
+(define-read-only (get-stream-health (stream-id uint))
+  (match (map-get? streams stream-id)
+    stream (ok {
+      is-active: (and
+        (not (get is-cancelled stream))
+        (not (get is-completed stream))
+        (<= stacks-block-height (get end-block stream))
+      ),
+      is-paused: (get is-paused stream),
+      is-cancelled: (get is-cancelled stream),
+      is-completed: (get is-completed stream),
+      blocks-remaining: (if (> (get end-block stream) stacks-block-height)
+                           (- (get end-block stream) stacks-block-height)
+                           u0)
+    })
+    (err u302)
+  )
+)
