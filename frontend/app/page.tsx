@@ -3,6 +3,7 @@ import {
   NavBar,
   AuditBanner,
   Hero,
+  StatsBanner,
   ParamsGrid,
   HowItWorks,
   UseCases,
@@ -30,6 +31,7 @@ export default function Home() {
         tabIndex={-1}
       >
         <Hero />
+        <StatsBanner />
         <AuditBanner />
         <ParamsGrid />
         <HowItWorks />

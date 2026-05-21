@@ -29,3 +29,4 @@ export * from "./RoadmapItem";
 export * from "./TechStack";
 export * from "./FAQ";
 export * from "./FAQItem";
+export * from "./StatsBanner";
