@@ -321,3 +321,51 @@ describe("stream-registry get-stream unknown", () => {
     expect(result).toBeOk(Cl.none());
   });
 });
+
+describe("stream-registry get-stream-health", () => {
+  it("returns error for unknown stream", () => {
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-health", [Cl.uint(9999)], deployer);
+    expect(result).toBeErr(Cl.uint(302));
+  });
+
+  it("reports active stream as active and not paused", () => {
+    setupVault();
+    openStream();
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-health", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.tuple({
+      "is-active": Cl.bool(true),
+      "is-paused": Cl.bool(false),
+      "is-cancelled": Cl.bool(false),
+      "is-completed": Cl.bool(false),
+      "blocks-remaining": Cl.uint(DURATION),
+    }));
+  });
+
+  it("reports paused stream correctly", () => {
+    setupVault();
+    openStream();
+    simnet.callPublicFn("stream-registry", "pause-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-health", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.tuple({
+      "is-active": Cl.bool(true),
+      "is-paused": Cl.bool(true),
+      "is-cancelled": Cl.bool(false),
+      "is-completed": Cl.bool(false),
+      "blocks-remaining": Cl.uint(DURATION),
+    }));
+  });
+
+  it("reports cancelled stream correctly", () => {
+    setupVault();
+    openStream();
+    simnet.callPublicFn("stream-registry", "cancel-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-health", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.tuple({
+      "is-active": Cl.bool(false),
+      "is-paused": Cl.bool(false),
+      "is-cancelled": Cl.bool(true),
+      "is-completed": Cl.bool(false),
+      "blocks-remaining": Cl.uint(DURATION),
+    }));
+  });
+});
