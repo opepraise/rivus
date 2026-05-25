@@ -2,6 +2,7 @@
 **/settings/Mainnet.toml
 **/settings/Testnet.toml
 .cache/**
+.claude/settings.json
 history.txt
 
 logs
