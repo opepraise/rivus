@@ -331,6 +331,17 @@ describe("stream-registry paused stream withdrawal guard", () => {
   });
 });
 
+describe("stream-registry top-up on cancelled stream", () => {
+  it("cannot top-up a cancelled stream", () => {
+    setupVault();
+    openStream();
+    simnet.callPublicFn("stream-registry", "cancel-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callPublicFn("stream-registry", "top-up-stream",
+      [Cl.uint(0), Cl.uint(50_000)], wallet1);
+    expect(result).toBeErr(Cl.uint(305));
+  });
+});
+
 describe("stream-registry get-stream unknown", () => {
   it("get-stream returns none for non-existent stream id", () => {
     const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream", [Cl.uint(9999)], deployer);
