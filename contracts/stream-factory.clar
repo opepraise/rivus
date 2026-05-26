@@ -63,6 +63,8 @@
 )
 
 (define-read-only (get-blocks-per-month) (ok BLOCKS_PER_MONTH))
+(define-read-only (get-blocks-per-week) (ok BLOCKS_PER_WEEK))
+(define-read-only (get-blocks-per-day) (ok BLOCKS_PER_DAY))
 (define-read-only (get-total-batch-calls) (ok (var-get total-batch-calls)))
 (define-read-only (get-total-factory-streams) (ok (var-get total-factory-streams)))
 (define-read-only (get-min-stream-amount) (ok MIN_STREAM_AMOUNT))
