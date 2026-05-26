@@ -55,6 +55,10 @@
   (ok (* monthly-amount months))
 )
 
+(define-read-only (estimate-payroll-duration (months uint))
+  (ok (* months BLOCKS_PER_MONTH))
+)
+
 (define-read-only (estimate-rate-per-block (total-amount uint) (duration-blocks uint))
   (if (> duration-blocks u0)
     (ok (/ total-amount duration-blocks))
