@@ -16,6 +16,7 @@
 (define-constant ERR-SELF-STREAM (err u312))
 
 (define-constant MIN_STREAM_AMOUNT u10000)
+(define-constant MAX_STREAM_AMOUNT u1000000000000)
 (define-constant MIN_STREAM_DURATION u10)
 
 (define-data-var contract-owner principal tx-sender)
@@ -239,6 +240,7 @@
 (define-read-only (get-total-volume-streamed) (ok (var-get total-volume-streamed)))
 (define-read-only (get-next-stream-id) (ok (var-get next-stream-id)))
 (define-read-only (get-min-stream-amount) (ok MIN_STREAM_AMOUNT))
+(define-read-only (get-max-stream-amount) (ok MAX_STREAM_AMOUNT))
 
 (define-read-only (get-owner)
   (ok (var-get contract-owner))
