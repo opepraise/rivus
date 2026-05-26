@@ -174,6 +174,18 @@ describe("stream-factory estimate-vesting-cost", () => {
     }));
   });
 
+  it("accepts amount exactly at minimum", () => {
+    const { result } = simnet.callReadOnlyFn("stream-factory", "estimate-vesting-cost",
+      [Cl.uint(10_000), Cl.uint(0), Cl.uint(100)], deployer);
+    expect(result).toBeOk(Cl.tuple({
+      "total-amount": Cl.uint(10_000),
+      "cliff-blocks": Cl.uint(0),
+      "vesting-blocks": Cl.uint(100),
+      "rate-per-block": Cl.uint(100),
+      "total-blocks": Cl.uint(100),
+    }));
+  });
+
   it("rejects amount below minimum", () => {
     const { result } = simnet.callReadOnlyFn("stream-factory", "estimate-vesting-cost",
       [Cl.uint(9_999), Cl.uint(10), Cl.uint(500)], deployer);
