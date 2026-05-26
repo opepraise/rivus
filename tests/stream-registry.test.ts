@@ -322,6 +322,25 @@ describe("stream-registry get-stream unknown", () => {
   });
 });
 
+describe("stream-registry protocol limits", () => {
+  it("max stream amount is 1 trillion uSTX", () => {
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-max-stream-amount", [], deployer);
+    expect(result).toBeOk(Cl.uint(1_000_000_000_000));
+  });
+
+  it("min stream duration is 10 blocks", () => {
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-min-stream-duration", [], deployer);
+    expect(result).toBeOk(Cl.uint(10));
+  });
+
+  it("min stream amount is less than max stream amount", () => {
+    const { result: minResult } = simnet.callReadOnlyFn("stream-registry", "get-min-stream-amount", [], deployer);
+    const { result: maxResult } = simnet.callReadOnlyFn("stream-registry", "get-max-stream-amount", [], deployer);
+    expect(minResult).toBeOk(Cl.uint(10_000));
+    expect(maxResult).toBeOk(Cl.uint(1_000_000_000_000));
+  });
+});
+
 describe("stream-registry get-stream-duration", () => {
   it("returns correct duration for an open stream", () => {
     setupVault();
