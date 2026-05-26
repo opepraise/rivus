@@ -1,4 +1,4 @@
-import { GITHUB_URL } from "../data";
+import { ISSUES_URL } from "../data";
 
 export function AuditBanner() {
   return (
@@ -15,7 +15,7 @@ export function AuditBanner() {
         is in progress — mainnet launch follows a third-party audit. Do not use with
         funds you cannot afford to lose.{" "}
         <a
-          href={`${GITHUB_URL}/issues`}
+          href={ISSUES_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="underline hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 rounded"

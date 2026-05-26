@@ -1,16 +1,16 @@
-import { GITHUB_URL } from "../data";
+import { GITHUB_URL, ISSUES_URL, DISCUSSIONS_URL } from "../data";
 
 const ways = [
   {
     title: "Report bugs",
     desc: "Open an issue describing the unexpected behaviour and steps to reproduce.",
-    href: `${GITHUB_URL}/issues/new`,
+    href: `${ISSUES_URL}/new`,
     cta: "Open issue",
   },
   {
     title: "Suggest features",
     desc: "Start a discussion in the GitHub Discussions tab before opening a PR.",
-    href: `${GITHUB_URL}/discussions`,
+    href: DISCUSSIONS_URL,
     cta: "Start discussion",
   },
   {
