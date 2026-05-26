@@ -271,6 +271,13 @@
   )
 )
 
+(define-read-only (get-stream-duration (stream-id uint))
+  (match (map-get? streams stream-id)
+    stream (ok (- (get end-block stream) (get start-block stream)))
+    ERR-STREAM-NOT-FOUND
+  )
+)
+
 (define-read-only (get-stream-elapsed (stream-id uint))
   (match (map-get? streams stream-id)
     stream
