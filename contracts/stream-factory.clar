@@ -56,7 +56,7 @@
 (define-read-only (estimate-rate-per-block (total-amount uint) (duration-blocks uint))
   (if (> duration-blocks u0)
     (ok (/ total-amount duration-blocks))
-    (err u403)
+    ERR-INVALID-BLOCKS
   )
 )
 
