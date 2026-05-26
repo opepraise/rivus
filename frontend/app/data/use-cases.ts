@@ -30,4 +30,9 @@ export const useCases: UseCase[] = [
     title: "DAO treasury",
     desc: "Replace lump-sum proposals with continuous disbursements. DAOs can cancel streams if contributors go inactive.",
   },
+  {
+    icon: "06",
+    title: "Token distribution",
+    desc: "Stream RVUS or STX rewards to community members continuously instead of periodic batch drops.",
+  },
 ];
