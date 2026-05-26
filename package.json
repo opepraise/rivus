@@ -10,8 +10,11 @@
     "test:report": "vitest run -- --coverage --costs",
     "test:watch": "chokidar \"tests/**/*.ts\" \"contracts/**/*.clar\" --command \"npm run test\""
   },
-  "author": "",
-  "license": "ISC",
+  "author": "opepraise",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "@hirosystems/clarinet-sdk": "^3.0.0",
     "@stacks/transactions": "^7.0.5",
