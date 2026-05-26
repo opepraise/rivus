@@ -69,6 +69,18 @@
 (define-read-only (get-total-factory-streams) (ok (var-get total-factory-streams)))
 (define-read-only (get-min-stream-amount) (ok MIN_STREAM_AMOUNT))
 
+(define-read-only (estimate-weekly-cost (weekly-amount uint) (weeks uint))
+  (if (and (>= (* weekly-amount weeks) MIN_STREAM_AMOUNT) (> weeks u0))
+    (ok {
+      total-amount: (* weekly-amount weeks),
+      total-blocks: (* weeks BLOCKS_PER_WEEK),
+      rate-per-block: (/ (* weekly-amount weeks) (* weeks BLOCKS_PER_WEEK)),
+      weeks: weeks
+    })
+    ERR-MIN-AMOUNT
+  )
+)
+
 (define-read-only (estimate-vesting-end (cliff-blocks uint) (vesting-blocks uint))
   (ok (+ stacks-block-height cliff-blocks vesting-blocks))
 )
