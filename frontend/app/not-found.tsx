@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GitHubIcon } from "./components/icons";
+import { GITHUB_URL } from "./data";
 
 export const metadata: Metadata = {
   title: "Page not found — Rivus",
@@ -31,7 +32,7 @@ export default function NotFound() {
           Go home
         </a>
         <a
-          href="https://github.com/opepraise/rivus"
+          href={GITHUB_URL}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="View Rivus on GitHub (opens in new tab)"
