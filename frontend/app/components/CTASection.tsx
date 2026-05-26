@@ -20,7 +20,7 @@ export function CTASection() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Star Rivus on GitHub (opens in new tab)"
-          className="flex items-center gap-2 rounded-lg bg-[#6366f1] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#4f46e5] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          className="flex items-center gap-2 rounded-lg bg-[#6366f1] px-6 py-2.5 text-sm font-medium text-white hover:bg-(--accent-dark) transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
         >
           <GitHubIcon />
           Star on GitHub
