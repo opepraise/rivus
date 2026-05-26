@@ -16,6 +16,7 @@ export * from "./ContractRow";
 export * from "./Contracts";
 export * from "./SecurityItem";
 export * from "./Security";
+export * from "./ContributeSection";
 export * from "./CTASection";
 export * from "./OpenSourceBanner";
 export * from "./BackToTop";
