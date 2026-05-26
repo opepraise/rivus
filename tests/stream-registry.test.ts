@@ -305,6 +305,22 @@ describe("stream-registry non-sender pause guard", () => {
   });
 });
 
+describe("stream-registry withdrawal authorization", () => {
+  it("non-recipient cannot withdraw from a stream", () => {
+    setupVault();
+    openStream();
+    const { result } = simnet.callPublicFn("stream-registry", "withdraw-from-stream", [Cl.uint(0)], wallet3);
+    expect(result).toBeErr(Cl.uint(303));
+  });
+
+  it("sender cannot withdraw from their own stream", () => {
+    setupVault();
+    openStream();
+    const { result } = simnet.callPublicFn("stream-registry", "withdraw-from-stream", [Cl.uint(0)], wallet1);
+    expect(result).toBeErr(Cl.uint(303));
+  });
+});
+
 describe("stream-registry paused stream withdrawal guard", () => {
   it("recipient cannot withdraw from paused stream", () => {
     setupVault();
