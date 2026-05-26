@@ -1,4 +1,4 @@
-const GITHUB_URL = "https://github.com/opepraise/rivus";
+import { GITHUB_URL } from "../data";
 
 const ways = [
   {
