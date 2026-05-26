@@ -306,6 +306,6 @@
                            (- (get end-block stream) stacks-block-height)
                            u0)
     })
-    (err u302)
+    ERR-STREAM-NOT-FOUND
   )
 )
