@@ -222,7 +222,7 @@
 (define-read-only (get-withdrawable-amount (stream-id uint))
   (match (map-get? streams stream-id)
     stream (ok (compute-withdrawable stream))
-    (err u302)
+    ERR-STREAM-NOT-FOUND
   )
 )
 
