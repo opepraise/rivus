@@ -12,8 +12,8 @@ export const protocolStats: ProtocolStat[] = [
   },
   {
     label: "Test coverage",
-    value: "100%",
-    desc: "Every public function covered by Clarinet unit tests",
+    value: "119+",
+    desc: "Clarinet unit tests covering all public functions and edge cases",
   },
   {
     label: "Lines of Clarity",
