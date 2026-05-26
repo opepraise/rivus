@@ -322,6 +322,20 @@ describe("stream-registry get-stream unknown", () => {
   });
 });
 
+describe("stream-registry get-stream-duration", () => {
+  it("returns correct duration for an open stream", () => {
+    setupVault();
+    openStream();
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-duration", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(DURATION));
+  });
+
+  it("returns error for unknown stream id", () => {
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-duration", [Cl.uint(9999)], deployer);
+    expect(result).toBeErr(Cl.uint(302));
+  });
+});
+
 describe("stream-registry get-stream-health", () => {
   it("returns error for unknown stream", () => {
     const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-health", [Cl.uint(9999)], deployer);
