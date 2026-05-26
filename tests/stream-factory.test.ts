@@ -111,6 +111,56 @@ describe("stream-factory vesting end estimate", () => {
   });
 });
 
+describe("stream-factory time constants", () => {
+  it("blocks per week is 1080", () => {
+    const { result } = simnet.callReadOnlyFn("stream-factory", "get-blocks-per-week", [], deployer);
+    expect(result).toBeOk(Cl.uint(1080));
+  });
+
+  it("blocks per day is 144", () => {
+    const { result } = simnet.callReadOnlyFn("stream-factory", "get-blocks-per-day", [], deployer);
+    expect(result).toBeOk(Cl.uint(144));
+  });
+
+  it("blocks per day times 7 equals blocks per week", () => {
+    const { result: dayResult } = simnet.callReadOnlyFn("stream-factory", "get-blocks-per-day", [], deployer);
+    const { result: weekResult } = simnet.callReadOnlyFn("stream-factory", "get-blocks-per-week", [], deployer);
+    expect(dayResult).toBeOk(Cl.uint(144));
+    expect(weekResult).toBeOk(Cl.uint(1080));
+  });
+
+  it("estimate-payroll-duration returns correct block count for 3 months", () => {
+    const { result } = simnet.callReadOnlyFn("stream-factory", "estimate-payroll-duration",
+      [Cl.uint(3)], deployer);
+    expect(result).toBeOk(Cl.uint(3 * 4320));
+  });
+});
+
+describe("stream-factory estimate-weekly-cost", () => {
+  it("returns correct breakdown for valid weekly stream", () => {
+    const { result } = simnet.callReadOnlyFn("stream-factory", "estimate-weekly-cost",
+      [Cl.uint(50_000), Cl.uint(4)], deployer);
+    expect(result).toBeOk(Cl.tuple({
+      "total-amount": Cl.uint(200_000),
+      "total-blocks": Cl.uint(4 * 1080),
+      "rate-per-block": Cl.uint(Math.floor(50_000 / 1080)),
+      "weeks": Cl.uint(4),
+    }));
+  });
+
+  it("rejects weekly cost below minimum stream amount", () => {
+    const { result } = simnet.callReadOnlyFn("stream-factory", "estimate-weekly-cost",
+      [Cl.uint(1_000), Cl.uint(1)], deployer);
+    expect(result).toBeErr(Cl.uint(404));
+  });
+
+  it("rejects zero weeks", () => {
+    const { result } = simnet.callReadOnlyFn("stream-factory", "estimate-weekly-cost",
+      [Cl.uint(50_000), Cl.uint(0)], deployer);
+    expect(result).toBeErr(Cl.uint(404));
+  });
+});
+
 describe("stream-factory estimate-vesting-cost", () => {
   it("returns full cost breakdown for valid inputs", () => {
     const { result } = simnet.callReadOnlyFn("stream-factory", "estimate-vesting-cost",
