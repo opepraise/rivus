@@ -265,7 +265,7 @@
 (define-read-only (get-stream-remaining (stream-id uint))
   (match (map-get? streams stream-id)
     stream (ok (- (get total-amount stream) (get withdrawn stream)))
-    (err u302)
+    ERR-STREAM-NOT-FOUND
   )
 )
 
