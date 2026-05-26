@@ -8,9 +8,9 @@ export function StatsBanner() {
         {protocolStats.map((stat) => (
           <div
             key={stat.label}
-            className="rounded-xl border border-[#1e293b] bg-[#0d1117] px-5 py-5 space-y-1"
+            className="rounded-xl border border-(--border) bg-(--surface) px-5 py-5 space-y-1"
           >
-            <dt className="text-xs text-[#94a3b8] uppercase tracking-wide">{stat.label}</dt>
+            <dt className="text-xs text-(--text-muted) uppercase tracking-wide">{stat.label}</dt>
             <dd
               className="text-2xl font-bold text-white"
               aria-label={`${stat.label}: ${stat.value}`}
