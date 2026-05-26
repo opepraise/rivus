@@ -330,14 +330,18 @@ describe("stream-registry get-stream-health", () => {
 
   it("reports active stream as active and not paused", () => {
     setupVault();
-    openStream();
+    const start = simnet.blockHeight + START_OFFSET;
+    const end = start + DURATION;
+    simnet.callPublicFn("stream-registry", "open-stream",
+      [Cl.principal(wallet2), Cl.uint(STREAM_AMOUNT), Cl.uint(start), Cl.uint(end)], wallet1);
+    const expectedBlocksRemaining = end - simnet.blockHeight;
     const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-health", [Cl.uint(0)], deployer);
     expect(result).toBeOk(Cl.tuple({
       "is-active": Cl.bool(true),
       "is-paused": Cl.bool(false),
       "is-cancelled": Cl.bool(false),
       "is-completed": Cl.bool(false),
-      "blocks-remaining": Cl.uint(DURATION),
+      "blocks-remaining": Cl.uint(expectedBlocksRemaining),
     }));
   });
 
