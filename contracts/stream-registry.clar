@@ -251,7 +251,7 @@
       (not (get is-completed stream))
       (<= stacks-block-height (get end-block stream))
     ))
-    (err u302)
+    ERR-STREAM-NOT-FOUND
   )
 )
 
