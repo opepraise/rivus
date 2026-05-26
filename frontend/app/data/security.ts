@@ -6,4 +6,5 @@ export const securityProperties: string[] = [
   "Pause/resume tracks paused duration so accrual is never double-counted",
   "Self-stream guard rejects open-stream when sender equals recipient",
   "Top-up enforces minimum amount to prevent micro-increment manipulation",
+  "Rate-of-zero guard rejects streams where total-amount divided by duration rounds to zero uSTX/block",
 ];
