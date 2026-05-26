@@ -278,7 +278,7 @@
                   stacks-block-height)))
       (ok (if (> to from) (- to from) u0))
     )
-    (err u302)
+    ERR-STREAM-NOT-FOUND
   )
 )
 
