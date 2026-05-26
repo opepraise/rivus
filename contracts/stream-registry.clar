@@ -241,6 +241,7 @@
 (define-read-only (get-next-stream-id) (ok (var-get next-stream-id)))
 (define-read-only (get-min-stream-amount) (ok MIN_STREAM_AMOUNT))
 (define-read-only (get-max-stream-amount) (ok MAX_STREAM_AMOUNT))
+(define-read-only (get-min-stream-duration) (ok MIN_STREAM_DURATION))
 
 (define-read-only (get-owner)
   (ok (var-get contract-owner))
