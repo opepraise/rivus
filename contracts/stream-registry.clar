@@ -258,7 +258,7 @@
 (define-read-only (get-stream-rate (stream-id uint))
   (match (map-get? streams stream-id)
     stream (ok (get rate-per-block stream))
-    (err u302)
+    ERR-STREAM-NOT-FOUND
   )
 )
 
