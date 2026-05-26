@@ -272,6 +272,25 @@
   )
 )
 
+(define-read-only (get-stream-progress (stream-id uint))
+  (match (map-get? streams stream-id)
+    stream (let (
+      (duration (- (get end-block stream) (get start-block stream)))
+      (elapsed (if (> stacks-block-height (get start-block stream))
+                   (if (<= stacks-block-height (get end-block stream))
+                       (- stacks-block-height (get start-block stream))
+                       duration)
+                   u0))
+    )
+      (if (> duration u0)
+        (ok (/ (* elapsed u100) duration))
+        (ok u100)
+      )
+    )
+    ERR-STREAM-NOT-FOUND
+  )
+)
+
 (define-read-only (get-stream-duration (stream-id uint))
   (match (map-get? streams stream-id)
     stream (ok (- (get end-block stream) (get start-block stream)))
