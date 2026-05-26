@@ -75,6 +75,28 @@ describe("stream-vault utilization", () => {
   });
 });
 
+describe("stream-vault total-locked tracks stream funds", () => {
+  it("total-locked increases after a stream is opened", () => {
+    simnet.callPublicFn("stream-vault", "set-registry",
+      [Cl.principal(`${deployer}.stream-registry`)], deployer);
+    const start = simnet.blockHeight + 2;
+    simnet.callPublicFn("stream-registry", "open-stream",
+      [Cl.principal(wallet2), Cl.uint(100_000), Cl.uint(start), Cl.uint(start + 100)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-vault", "get-total-locked", [], deployer);
+    expect(result).toBeOk(Cl.uint(100_000));
+  });
+
+  it("stream balance equals locked amount for a given stream id", () => {
+    simnet.callPublicFn("stream-vault", "set-registry",
+      [Cl.principal(`${deployer}.stream-registry`)], deployer);
+    const start = simnet.blockHeight + 2;
+    simnet.callPublicFn("stream-registry", "open-stream",
+      [Cl.principal(wallet2), Cl.uint(50_000), Cl.uint(start), Cl.uint(start + 100)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-vault", "get-stream-balance", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(50_000));
+  });
+});
+
 describe("stream-vault zero top-up rejection", () => {
   it("rejects unauthorized direct call to lock-stream-funds", () => {
     simnet.callPublicFn("stream-vault", "set-registry",
