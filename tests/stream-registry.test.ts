@@ -331,6 +331,38 @@ describe("stream-registry paused stream withdrawal guard", () => {
   });
 });
 
+describe("stream-registry pause and resume lifecycle", () => {
+  it("stream reports not paused in health check after resume", () => {
+    setupVault();
+    const start = simnet.blockHeight + START_OFFSET;
+    const end = start + DURATION;
+    simnet.callPublicFn("stream-registry", "open-stream",
+      [Cl.principal(wallet2), Cl.uint(STREAM_AMOUNT), Cl.uint(start), Cl.uint(end)], wallet1);
+    simnet.callPublicFn("stream-registry", "pause-stream", [Cl.uint(0)], wallet1);
+    simnet.callPublicFn("stream-registry", "resume-stream", [Cl.uint(0)], wallet1);
+    const blocksRemaining = end - simnet.blockHeight;
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-health", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.tuple({
+      "is-active": Cl.bool(true),
+      "is-paused": Cl.bool(false),
+      "is-cancelled": Cl.bool(false),
+      "is-completed": Cl.bool(false),
+      "blocks-remaining": Cl.uint(blocksRemaining),
+    }));
+  });
+
+  it("recipient cannot withdraw while paused but can after resume", () => {
+    setupVault();
+    openStream();
+    simnet.callPublicFn("stream-registry", "pause-stream", [Cl.uint(0)], wallet1);
+    const { result: pausedResult } = simnet.callPublicFn("stream-registry", "withdraw-from-stream", [Cl.uint(0)], wallet2);
+    expect(pausedResult).toBeErr(Cl.uint(307));
+    simnet.callPublicFn("stream-registry", "resume-stream", [Cl.uint(0)], wallet1);
+    const { result: resumedResult } = simnet.callPublicFn("stream-registry", "resume-stream", [Cl.uint(0)], wallet1);
+    expect(resumedResult).toBeErr(Cl.uint(308));
+  });
+});
+
 describe("stream-registry top-up on cancelled stream", () => {
   it("cannot top-up a cancelled stream", () => {
     setupVault();
