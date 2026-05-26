@@ -341,6 +341,20 @@ describe("stream-registry protocol limits", () => {
   });
 });
 
+describe("stream-registry get-stream-progress", () => {
+  it("returns 0 before stream start block", () => {
+    setupVault();
+    openStream();
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-progress", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(0));
+  });
+
+  it("returns error for unknown stream", () => {
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-progress", [Cl.uint(9999)], deployer);
+    expect(result).toBeErr(Cl.uint(302));
+  });
+});
+
 describe("stream-registry get-stream-duration", () => {
   it("returns correct duration for an open stream", () => {
     setupVault();
