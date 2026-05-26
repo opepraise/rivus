@@ -7,10 +7,10 @@ export default function Loading() {
     >
       <div className="flex flex-col items-center gap-4">
         <div
-          className="h-8 w-8 rounded-full border-2 border-[#6366f1]/30 border-t-[#6366f1] animate-spin"
+          className="h-8 w-8 rounded-full border-2 border-(--accent)/30 border-t-(--accent) animate-spin"
           aria-hidden="true"
         />
-        <span className="text-sm text-[#94a3b8] animate-pulse">Loading…</span>
+        <span className="text-sm text-(--text-muted) animate-pulse">Loading…</span>
       </div>
     </div>
   );
