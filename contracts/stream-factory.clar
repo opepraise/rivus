@@ -82,6 +82,6 @@
       rate-per-block: (/ total-amount vesting-blocks),
       total-blocks: (+ cliff-blocks vesting-blocks)
     })
-    (err ERR-MIN-AMOUNT)
+    ERR-MIN-AMOUNT
   )
 )
