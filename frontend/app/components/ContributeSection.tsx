@@ -28,22 +28,22 @@ export function ContributeSection() {
         <h2 id="contribute-heading" className="text-2xl font-semibold text-white">
           Contribute
         </h2>
-        <p className="mt-2 text-[#94a3b8]">Rivus is community driven.</p>
+        <p className="mt-2 text-(--text-muted)">Rivus is community driven.</p>
       </div>
       <div className="grid gap-4 sm:grid-cols-3">
         {ways.map((w) => (
           <div
             key={w.title}
-            className="rounded-xl border border-[#1e293b] bg-[#0d1117] p-5 space-y-3 hover:border-[#6366f1]/30 transition-colors"
+            className="rounded-xl border border-(--border) bg-(--surface) p-5 space-y-3 hover:border-[#6366f1]/30 transition-colors"
           >
             <h3 className="text-sm font-semibold text-white">{w.title}</h3>
-            <p className="text-sm text-[#94a3b8] leading-relaxed">{w.desc}</p>
+            <p className="text-sm text-(--text-muted) leading-relaxed">{w.desc}</p>
             <a
               href={w.href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${w.cta} on GitHub (opens in new tab)`}
-              className="inline-block text-xs text-[#818cf8] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1] rounded"
+              className="inline-block text-xs text-(--accent-muted) hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) rounded"
             >
               {w.cta} →
             </a>
