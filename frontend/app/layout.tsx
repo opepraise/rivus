@@ -6,7 +6,7 @@ import { buildProtocolSchema } from "./structured-data";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-const BASE_URL = "https://rivus.xyz";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://rivus.xyz";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
