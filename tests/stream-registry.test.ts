@@ -609,10 +609,12 @@ describe("stream-registry withdrawal flow", () => {
   it("get-withdrawable-amount is positive after blocks advance past start", () => {
     setupVault();
     openStream();
+    // setupVault mines 1 block before openStream captures start-block,
+    // so 12 empty blocks land the chain 11 blocks past start-block.
     simnet.mineEmptyBlocks(START_OFFSET + 10);
     const { result } = simnet.callReadOnlyFn("stream-registry", "get-withdrawable-amount", [Cl.uint(0)], deployer);
     const rate = STREAM_AMOUNT / DURATION;
-    expect(result).toBeOk(Cl.uint(10 * rate));
+    expect(result).toBeOk(Cl.uint(11 * rate));
   });
 
   it("multiple valid top-ups accumulate total-amount correctly", () => {
