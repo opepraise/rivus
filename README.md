@@ -64,6 +64,14 @@ clarinet call stream-vault set-registry <stream-registry-address>
 
 ## Security
 
+### Authorization by contract
+
+| Contract | User auth | Cross-contract auth |
+|---|---|---|
+| `stream-registry` | `tx-sender` (sender/recipient check) | — |
+| `stream-vault` | — | `contract-caller` (registry check) |
+| `rvus-token` | `tx-sender` (transfer, ownership) | `contract-caller` (mint, burn) |
+
 - Cross-contract calls (vault, token mint/burn) use `contract-caller` to prevent principal spoofing
 - User-facing auth (registry open/withdraw/cancel) uses `tx-sender` — the actual transaction origin
 - Token transfers use `tx-sender` to prevent unauthorized spending
