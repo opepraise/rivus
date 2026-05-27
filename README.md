@@ -60,6 +60,8 @@ clarinet call stream-factory create-payroll-stream <recipient> <monthly-amount> 
 clarinet call stream-factory create-vesting-stream <beneficiary> <total> <cliff-blocks> <vest-blocks>
 ```
 
+> **Amount limits:** `monthly-amount × months` for payroll and `total` for vesting must each be within `[10,000, 1,000,000,000,000]` uSTX. Streams topped up via `top-up-stream` are subject to the same ceiling on their running total.
+
 ## Deployment
 
 ```bash
