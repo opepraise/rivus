@@ -609,6 +609,19 @@ describe("stream-registry withdrawal flow", () => {
 });
 
 describe("stream-registry cancel stream correctness", () => {
+  it("cancel-stream mid-stream pays the recipient their earned portion", () => {
+    setupVault();
+    openStream();
+    simnet.mineEmptyBlocks(START_OFFSET + 20);
+    // cancel mines 1 block, so 22 active blocks have elapsed at cancel time
+    const rate = STREAM_AMOUNT / DURATION;
+    const earnedBeforeCancel = 22 * rate;
+    simnet.callPublicFn("stream-registry", "cancel-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-vault", "get-stream-balance", [Cl.uint(0)], deployer);
+    const refunded = STREAM_AMOUNT - earnedBeforeCancel;
+    expect(result).toBeOk(Cl.uint(STREAM_AMOUNT - earnedBeforeCancel - refunded));
+  });
+
   it("cancel-stream on a completed stream returns ERR-STREAM-COMPLETED", () => {
     setupVault();
     openStream();
