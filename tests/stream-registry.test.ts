@@ -608,9 +608,6 @@ describe("stream-registry withdrawal flow", () => {
 
 });
 
-describe("stream-registry pause and resume state tracking", () => {
-});
-
 describe("stream-registry cancel stream correctness", () => {
   it("cancel-stream sets is-cancelled true and is-active false", () => {
     setupVault();
