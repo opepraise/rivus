@@ -609,6 +609,14 @@ describe("stream-registry withdrawal flow", () => {
 });
 
 describe("stream-registry cancel stream correctness", () => {
+  it("cancel-stream on already-cancelled stream returns ERR-STREAM-CANCELLED", () => {
+    setupVault();
+    openStream();
+    simnet.callPublicFn("stream-registry", "cancel-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callPublicFn("stream-registry", "cancel-stream", [Cl.uint(0)], wallet1);
+    expect(result).toBeErr(Cl.uint(305));
+  });
+
   it("cancel-stream sets is-cancelled true and is-active false", () => {
     setupVault();
     openStream();
