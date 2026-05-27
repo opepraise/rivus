@@ -596,6 +596,17 @@ describe("stream-registry max-amount enforcement: top-up-stream", () => {
     expect(result).toBeErr(Cl.uint(313));
   });
 
+  it("rate-per-block unchanged after rejected top-up", () => {
+    setupVault();
+    openStream(wallet1, wallet2, STREAM_AMOUNT);
+    const expectedRate = STREAM_AMOUNT / DURATION;
+    const overflowAmount = 1_000_000_000_000 - STREAM_AMOUNT + 1;
+    simnet.callPublicFn("stream-registry", "top-up-stream",
+      [Cl.uint(0), Cl.uint(overflowAmount)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-rate", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(expectedRate));
+  });
+
   it("total-volume-streamed unchanged after rejected top-up", () => {
     setupVault();
     openStream(wallet1, wallet2, STREAM_AMOUNT);
