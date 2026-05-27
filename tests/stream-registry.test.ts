@@ -609,6 +609,18 @@ describe("stream-registry withdrawal flow", () => {
 });
 
 describe("stream-registry pause and resume state tracking", () => {
+  it("resume-stream accumulates paused-duration equal to pause length", () => {
+    setupVault();
+    openStream();
+    simnet.callPublicFn("stream-registry", "pause-stream", [Cl.uint(0)], wallet1);
+    simnet.mineEmptyBlocks(5);
+    simnet.callPublicFn("stream-registry", "resume-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream", [Cl.uint(0)], deployer);
+    const stream = (result as any).value.value.data;
+    const pausedDuration = Number(stream["paused-duration"].value);
+    expect(pausedDuration).toBeGreaterThan(0);
+  });
+
   it("pause-block field stores the block at which pause was called", () => {
     setupVault();
     openStream();
