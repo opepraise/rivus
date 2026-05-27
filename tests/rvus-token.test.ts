@@ -125,6 +125,14 @@ describe("rvus-token set-token-uri", () => {
 });
 
 describe("rvus-token supply tracking", () => {
+  it("owner can clear token URI by setting to none", () => {
+    simnet.callPublicFn("rvus-token", "set-token-uri",
+      [Cl.some(Cl.stringUtf8("https://rivus.xyz/token.json"))], deployer);
+    simnet.callPublicFn("rvus-token", "set-token-uri", [Cl.none()], deployer);
+    const { result } = simnet.callReadOnlyFn("rvus-token", "get-token-uri", [], deployer);
+    expect(result).toBeOk(Cl.none());
+  });
+
   it("transfer updates both sender and recipient balances correctly", () => {
     simnet.callPublicFn("rvus-token", "mint", [Cl.uint(1_000_000), Cl.principal(wallet1)], deployer);
     simnet.callPublicFn("rvus-token", "transfer",
