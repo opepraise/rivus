@@ -606,6 +606,14 @@ describe("stream-registry withdrawal flow", () => {
     expect(result).toBeOk(Cl.uint(0));
   });
 
+  it("withdraw-from-stream fails on cancelled stream with err u305", () => {
+    setupVault();
+    openStream();
+    simnet.callPublicFn("stream-registry", "cancel-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callPublicFn("stream-registry", "withdraw-from-stream", [Cl.uint(0)], wallet2);
+    expect(result).toBeErr(Cl.uint(305));
+  });
+
   it("stream is marked completed when all funds are withdrawn", () => {
     setupVault();
     openStream();
