@@ -125,6 +125,13 @@ describe("rvus-token set-token-uri", () => {
 });
 
 describe("rvus-token supply tracking", () => {
+  it("burn reduces total supply by the burned amount", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(1_000_000), Cl.principal(wallet1)], deployer);
+    simnet.callPublicFn("rvus-token", "burn", [Cl.uint(400_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callReadOnlyFn("rvus-token", "get-total-supply", [], deployer);
+    expect(result).toBeOk(Cl.uint(600_000));
+  });
+
   it("total supply increases by exactly the minted amount", () => {
     simnet.callPublicFn("rvus-token", "mint", [Cl.uint(500_000), Cl.principal(wallet1)], deployer);
     const { result } = simnet.callReadOnlyFn("rvus-token", "get-total-supply", [], deployer);
