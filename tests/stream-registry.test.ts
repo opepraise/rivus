@@ -606,6 +606,15 @@ describe("stream-registry withdrawal flow", () => {
     expect(result).toBeOk(Cl.uint(0));
   });
 
+  it("get-withdrawable-amount is positive after blocks advance past start", () => {
+    setupVault();
+    openStream();
+    simnet.mineEmptyBlocks(START_OFFSET + 10);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-withdrawable-amount", [Cl.uint(0)], deployer);
+    const rate = STREAM_AMOUNT / DURATION;
+    expect(result).toBeOk(Cl.uint(10 * rate));
+  });
+
   it("multiple valid top-ups accumulate total-amount correctly", () => {
     setupVault();
     openStream(wallet1, wallet2, STREAM_AMOUNT);
