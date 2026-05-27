@@ -14,6 +14,7 @@
 (define-constant ERR-NOTHING-TO-WITHDRAW (err u310))
 (define-constant ERR-MIN-AMOUNT (err u311))
 (define-constant ERR-SELF-STREAM (err u312))
+(define-constant ERR-MAX-AMOUNT (err u313))
 
 (define-constant MIN_STREAM_AMOUNT u10000)
 (define-constant MAX_STREAM_AMOUNT u1000000000000)
