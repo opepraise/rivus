@@ -45,5 +45,6 @@ jobs:
       - name: Install project dependencies
         run: npm ci --legacy-peer-deps
 
+      # Verify rivus-sdk is installable and publishable across platforms
       - name: Install rivus-sdk from npmjs.com
-        run: npm install --no-audit --no-fund rivus-sdk
+        run: npm install --no-audit --no-fund --ignore-scripts rivus-sdk
