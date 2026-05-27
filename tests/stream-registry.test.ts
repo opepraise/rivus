@@ -609,6 +609,23 @@ describe("stream-registry withdrawal flow", () => {
 });
 
 describe("stream-registry pause and resume state tracking", () => {
+});
+
+describe("stream-registry cancel stream correctness", () => {
+  it("cancel-stream sets is-cancelled true and is-active false", () => {
+    setupVault();
+    openStream();
+    simnet.callPublicFn("stream-registry", "cancel-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-health", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.tuple({
+      "is-active": Cl.bool(false),
+      "is-paused": Cl.bool(false),
+      "is-cancelled": Cl.bool(true),
+      "is-completed": Cl.bool(false),
+      "blocks-remaining": Cl.uint(DURATION),
+    }));
+  });
+
   it("withdrawal after resume does not count paused blocks in earned amount", () => {
     setupVault();
     openStream();
