@@ -44,8 +44,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Install root project deps (Clarinet SDK, vitest, etc.)
       - name: Install project dependencies
-        run: npm ci --legacy-peer-deps
+        run: npm ci
 
       # Verify rivus-sdk is installable and publishable across platforms
       - name: Install rivus-sdk from npmjs.com
