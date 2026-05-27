@@ -1,3 +1,6 @@
+# Mainnet deployment plan for Rivus protocol
+# Contract ordering follows dependency chain:
+# sip010-trait (no deps) -> rvus-token (impl-trait .sip010-trait) -> stream-vault -> stream-registry -> stream-factory
 ---
 id: 0
 name: Mainnet deployment
