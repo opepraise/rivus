@@ -479,3 +479,13 @@ describe("stream-registry get-stream-health", () => {
     }));
   });
 });
+
+describe("stream-registry max-amount enforcement: open-stream", () => {
+  it("rejects open-stream with amount above MAX_STREAM_AMOUNT", () => {
+    setupVault();
+    const start = simnet.blockHeight + START_OFFSET;
+    const { result } = simnet.callPublicFn("stream-registry", "open-stream",
+      [Cl.principal(wallet2), Cl.uint(1_000_000_000_001), Cl.uint(start), Cl.uint(start + DURATION)], wallet1);
+    expect(result).toBeErr(Cl.uint(313));
+  });
+});
