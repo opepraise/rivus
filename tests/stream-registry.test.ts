@@ -606,6 +606,15 @@ describe("stream-registry withdrawal flow", () => {
     expect(result).toBeOk(Cl.uint(0));
   });
 
+  it("vault stream-balance drops to zero when stream is fully withdrawn", () => {
+    setupVault();
+    openStream();
+    simnet.mineEmptyBlocks(START_OFFSET + DURATION + 10);
+    simnet.callPublicFn("stream-registry", "withdraw-from-stream", [Cl.uint(0)], wallet2);
+    const { result } = simnet.callReadOnlyFn("stream-vault", "get-stream-balance", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(0));
+  });
+
   it("withdraw-from-stream fails on cancelled stream with err u305", () => {
     setupVault();
     openStream();
