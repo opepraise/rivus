@@ -124,3 +124,17 @@ describe("stream-vault direct release rejection", () => {
     expect(result).toBeErr(Cl.uint(200));
   });
 });
+
+describe("stream-vault multi-stream accounting", () => {
+  it("total-locked equals the sum of two open streams", () => {
+    simnet.callPublicFn("stream-vault", "set-registry",
+      [Cl.principal(`${deployer}.stream-registry`)], deployer);
+    const start = simnet.blockHeight + 2;
+    simnet.callPublicFn("stream-registry", "open-stream",
+      [Cl.principal(wallet2), Cl.uint(40_000), Cl.uint(start), Cl.uint(start + 100)], wallet1);
+    simnet.callPublicFn("stream-registry", "open-stream",
+      [Cl.principal(wallet1), Cl.uint(60_000), Cl.uint(start), Cl.uint(start + 100)], wallet2);
+    const { result } = simnet.callReadOnlyFn("stream-vault", "get-total-locked", [], deployer);
+    expect(result).toBeOk(Cl.uint(100_000));
+  });
+});
