@@ -609,6 +609,21 @@ describe("stream-registry withdrawal flow", () => {
 });
 
 describe("stream-registry pause and resume state tracking", () => {
+  it("withdrawal after resume does not count paused blocks in earned amount", () => {
+    setupVault();
+    openStream();
+    // Mine 10 blocks past start so 10 blocks earn, then pause, then resume
+    simnet.mineEmptyBlocks(START_OFFSET + 8);
+    simnet.callPublicFn("stream-registry", "pause-stream", [Cl.uint(0)], wallet1);
+    simnet.mineEmptyBlocks(20);
+    simnet.callPublicFn("stream-registry", "resume-stream", [Cl.uint(0)], wallet1);
+    // After resume, withdrawable should exclude the 20+ pause blocks
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-withdrawable-amount", [Cl.uint(0)], deployer);
+    const rate = STREAM_AMOUNT / DURATION;
+    // Only the ~10 pre-pause active blocks should be withdrawable
+    expect(result).toBeOk(Cl.uint(10 * rate));
+  });
+
   it("get-withdrawable-amount returns 0 for a paused stream", () => {
     setupVault();
     openStream();
