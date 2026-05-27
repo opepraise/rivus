@@ -609,16 +609,32 @@ describe("stream-registry withdrawal flow", () => {
 });
 
 describe("stream-registry pause and resume state tracking", () => {
-  it("resume-stream accumulates paused-duration equal to pause length", () => {
+  it("resume-stream accumulates paused-duration equal to pause interval", () => {
     setupVault();
     openStream();
+    // After pause at block P, mine 5 empty, resume at P+6:
+    // additional-paused = (P+6) - P = 6 → paused-duration = 6
     simnet.callPublicFn("stream-registry", "pause-stream", [Cl.uint(0)], wallet1);
     simnet.mineEmptyBlocks(5);
     simnet.callPublicFn("stream-registry", "resume-stream", [Cl.uint(0)], wallet1);
+    // Use the same start-block derivation pattern as the existing test suite
+    const startBlock = simnet.blockHeight - 8 + START_OFFSET;
     const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream", [Cl.uint(0)], deployer);
-    const stream = (result as any).value.value.data;
-    const pausedDuration = Number(stream["paused-duration"].value);
-    expect(pausedDuration).toBeGreaterThan(0);
+    expect(result).toBeOk(Cl.some(Cl.tuple({
+      sender: Cl.principal(wallet1),
+      recipient: Cl.principal(wallet2),
+      "total-amount": Cl.uint(STREAM_AMOUNT),
+      withdrawn: Cl.uint(0),
+      "is-paused": Cl.bool(false),
+      "is-cancelled": Cl.bool(false),
+      "is-completed": Cl.bool(false),
+      "paused-duration": Cl.uint(6),
+      "pause-block": Cl.uint(0),
+      "rate-per-block": Cl.uint(STREAM_AMOUNT / DURATION),
+      "start-block": Cl.uint(startBlock),
+      "end-block": Cl.uint(startBlock + DURATION),
+      "last-withdraw-block": Cl.uint(startBlock),
+    })));
   });
 
   it("pause-block field stores the block at which pause was called", () => {
