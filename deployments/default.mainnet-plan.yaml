@@ -12,6 +12,13 @@ plan:
     - id: 0
       transactions:
         - contract-publish:
+            contract-name: sip010-trait
+            expected-sender: SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
+            cost: 1000
+            path: contracts/sip010-trait.clar
+            anchor-block-only: true
+            clarity-version: 3
+        - contract-publish:
             contract-name: rvus-token
             expected-sender: SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
             cost: 3000
