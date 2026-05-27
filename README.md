@@ -33,11 +33,12 @@ npm test
 ## Stream Lifecycle
 
 ```
-open-stream  →  [active]  →  withdraw-from-stream (recipient, anytime)
-                           →  top-up-stream (sender, adds more STX)
-                           →  pause-stream (sender, stops accrual)
-                               →  resume-stream (sender, restarts)
-                           →  cancel-stream (sender, refunds remainder)
+open-stream  →  [active]        →  withdraw-from-stream (recipient, anytime)
+                                 →  top-up-stream (sender, adds more STX)
+                                 →  pause-stream (sender, stops accrual)
+                                     →  resume-stream (sender, restarts)
+                                 →  cancel-stream (sender, refunds remainder)
+                [paused]         →  resume-stream (sender, restarts accrual)
 ```
 
 ## Batch Operations
