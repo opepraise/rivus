@@ -64,10 +64,11 @@ clarinet call stream-vault set-registry <stream-registry-address>
 
 ## Security
 
-- All cross-contract auth uses `contract-caller` (not `tx-sender`)
-- Vault uses `as-contract` for safe STX custody
-- Auth check runs before vault lookup in release/refund functions
-- Minimum stream amount (10,000 uSTX) prevents dust spam
+- Cross-contract calls (vault, token mint/burn) use `contract-caller` to prevent principal spoofing
+- User-facing auth (registry open/withdraw/cancel) uses `tx-sender` — the actual transaction origin
+- Token transfers use `tx-sender` to prevent unauthorized spending
+- Auth check runs before vault lookup in release/refund functions (defense-in-depth)
+- Minimum stream amount (10,000 uSTX) and minimum duration (10 blocks) prevent dust spam
 
 ## License
 
