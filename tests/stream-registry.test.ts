@@ -609,6 +609,16 @@ describe("stream-registry withdrawal flow", () => {
 });
 
 describe("stream-registry pause and resume state tracking", () => {
+  it("get-withdrawable-amount returns 0 for a paused stream", () => {
+    setupVault();
+    openStream();
+    simnet.mineEmptyBlocks(START_OFFSET + 5);
+    simnet.callPublicFn("stream-registry", "pause-stream", [Cl.uint(0)], wallet1);
+    simnet.mineEmptyBlocks(10);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-withdrawable-amount", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(0));
+  });
+
   it("resume-stream accumulates paused-duration equal to pause interval", () => {
     setupVault();
     openStream();
