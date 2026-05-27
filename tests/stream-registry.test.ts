@@ -606,6 +606,16 @@ describe("stream-registry withdrawal flow", () => {
     expect(result).toBeOk(Cl.uint(0));
   });
 
+  it("withdraw-from-stream returns the earned amount", () => {
+    setupVault();
+    openStream();
+    simnet.mineEmptyBlocks(START_OFFSET + 10);
+    // callPublicFn mines 1 block, so at withdrawal time 12 blocks elapsed
+    const rate = STREAM_AMOUNT / DURATION;
+    const { result } = simnet.callPublicFn("stream-registry", "withdraw-from-stream", [Cl.uint(0)], wallet2);
+    expect(result).toBeOk(Cl.uint(12 * rate));
+  });
+
   it("get-stream-remaining decreases after a successful withdrawal", () => {
     setupVault();
     openStream();
