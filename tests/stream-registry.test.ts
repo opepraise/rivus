@@ -596,6 +596,14 @@ describe("stream-registry max-amount enforcement: top-up-stream", () => {
     expect(result).toBeErr(Cl.uint(313));
   });
 
+  it("top-up below MIN_STREAM_AMOUNT rejected with u311 not u313", () => {
+    setupVault();
+    openStream(wallet1, wallet2, STREAM_AMOUNT);
+    const { result } = simnet.callPublicFn("stream-registry", "top-up-stream",
+      [Cl.uint(0), Cl.uint(9_999)], wallet1);
+    expect(result).toBeErr(Cl.uint(311));
+  });
+
   it("valid top-up succeeds after a rejected max-amount top-up", () => {
     setupVault();
     openStream(wallet1, wallet2, STREAM_AMOUNT);
