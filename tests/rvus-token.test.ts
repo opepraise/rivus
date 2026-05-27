@@ -123,3 +123,11 @@ describe("rvus-token set-token-uri", () => {
     expect(result).toBeErr(Cl.uint(100));
   });
 });
+
+describe("rvus-token supply tracking", () => {
+  it("total supply increases by exactly the minted amount", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(500_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callReadOnlyFn("rvus-token", "get-total-supply", [], deployer);
+    expect(result).toBeOk(Cl.uint(500_000));
+  });
+});
