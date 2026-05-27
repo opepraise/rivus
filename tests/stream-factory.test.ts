@@ -100,6 +100,19 @@ describe("stream-factory", () => {
     const { result } = simnet.callReadOnlyFn("stream-factory", "get-total-batch-calls", [], deployer);
     expect(result).toBeOk(Cl.uint(1));
   });
+
+  it("total-batch-calls accumulates across multiple batch operations", () => {
+    setupAll();
+    const start = simnet.blockHeight + 2;
+    simnet.callPublicFn("stream-factory", "create-payroll-stream",
+      [Cl.principal(wallet2), Cl.uint(50_000), Cl.uint(3), Cl.uint(start)], wallet1);
+    simnet.callPublicFn("stream-factory", "create-vesting-stream",
+      [Cl.principal(wallet2), Cl.uint(100_000), Cl.uint(10), Cl.uint(500)], wallet1);
+    simnet.callPublicFn("stream-factory", "create-payroll-stream",
+      [Cl.principal(wallet2), Cl.uint(30_000), Cl.uint(2), Cl.uint(start)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-factory", "get-total-batch-calls", [], deployer);
+    expect(result).toBeOk(Cl.uint(3));
+  });
 });
 
 describe("stream-factory estimate-vesting-end", () => {
