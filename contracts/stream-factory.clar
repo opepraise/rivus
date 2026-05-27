@@ -47,6 +47,7 @@
   )
     (asserts! (>= total-amount MIN_STREAM_AMOUNT) ERR-MIN-AMOUNT)
     (asserts! (> vesting-blocks u0) ERR-INVALID-BLOCKS)
+    (var-set total-batch-calls (+ (var-get total-batch-calls) u1))
     (var-set total-factory-streams (+ (var-get total-factory-streams) u1))
     (contract-call? .stream-registry open-stream beneficiary total-amount start-block end-block)
   )
