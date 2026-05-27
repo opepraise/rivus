@@ -595,4 +595,28 @@ describe("stream-registry max-amount enforcement: top-up-stream", () => {
       [Cl.uint(0), Cl.uint(overflowAmount)], wallet1);
     expect(result).toBeErr(Cl.uint(313));
   });
+
+  it("stream total-amount unchanged after rejected top-up", () => {
+    setupVault();
+    openStream(wallet1, wallet2, STREAM_AMOUNT);
+    const overflowAmount = 1_000_000_000_000 - STREAM_AMOUNT + 1;
+    simnet.callPublicFn("stream-registry", "top-up-stream",
+      [Cl.uint(0), Cl.uint(overflowAmount)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.some(Cl.tuple({
+      "total-amount": Cl.uint(STREAM_AMOUNT),
+      sender: Cl.principal(wallet1),
+      recipient: Cl.principal(wallet2),
+      withdrawn: Cl.uint(0),
+      "is-paused": Cl.bool(false),
+      "is-cancelled": Cl.bool(false),
+      "is-completed": Cl.bool(false),
+      "paused-duration": Cl.uint(0),
+      "pause-block": Cl.uint(0),
+      "rate-per-block": Cl.uint(STREAM_AMOUNT / DURATION),
+      "start-block": Cl.uint(simnet.blockHeight - 2 + START_OFFSET),
+      "end-block": Cl.uint(simnet.blockHeight - 2 + START_OFFSET + DURATION),
+      "last-withdraw-block": Cl.uint(simnet.blockHeight - 2 + START_OFFSET),
+    })));
+  });
 });
