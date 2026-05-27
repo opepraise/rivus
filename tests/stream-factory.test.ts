@@ -228,3 +228,16 @@ describe("stream-factory estimate-vesting-cost", () => {
     expect(result).toBeErr(Cl.uint(404));
   });
 });
+
+describe("stream-factory payroll stream structure", () => {
+  it("create-payroll-stream end-block equals start-block plus months times 4320", () => {
+    simnet.callPublicFn("stream-vault", "set-registry",
+      [Cl.principal(`${deployer}.stream-registry`)], deployer);
+    const months = 2;
+    const start = simnet.blockHeight + 2;
+    simnet.callPublicFn("stream-factory", "create-payroll-stream",
+      [Cl.principal(wallet2), Cl.uint(50_000), Cl.uint(months), Cl.uint(start)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-duration", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(months * 4320));
+  });
+});
