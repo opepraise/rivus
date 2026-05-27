@@ -579,4 +579,9 @@ describe("stream-registry max-amount enforcement: open-stream", () => {
       [Cl.principal(wallet2), Cl.uint(9_999), Cl.uint(start), Cl.uint(start + DURATION)], wallet1);
     expect(result).toBeErr(Cl.uint(311));
   });
+
+  it("get-max-stream-amount returns 1 trillion uSTX", () => {
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-max-stream-amount", [], deployer);
+    expect(result).toBeOk(Cl.uint(1_000_000_000_000));
+  });
 });
