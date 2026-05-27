@@ -606,6 +606,22 @@ describe("stream-registry withdrawal flow", () => {
     expect(result).toBeOk(Cl.uint(0));
   });
 
+  it("stream is marked completed when all funds are withdrawn", () => {
+    setupVault();
+    openStream();
+    // Mine past end-block so the entire duration has elapsed
+    simnet.mineEmptyBlocks(START_OFFSET + DURATION + 10);
+    simnet.callPublicFn("stream-registry", "withdraw-from-stream", [Cl.uint(0)], wallet2);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-health", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.tuple({
+      "is-active": Cl.bool(false),
+      "is-paused": Cl.bool(false),
+      "is-cancelled": Cl.bool(false),
+      "is-completed": Cl.bool(true),
+      "blocks-remaining": Cl.uint(0),
+    }));
+  });
+
   it("withdraw before stream start returns ERR-NOTHING-TO-WITHDRAW", () => {
     setupVault();
     openStream();
