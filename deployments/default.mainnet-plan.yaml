@@ -49,4 +49,5 @@ plan:
             path: contracts/stream-factory.clar
             anchor-block-only: true
             clarity-version: 3
+      # All contracts use Clarity 3 / epoch 3.1
       epoch: "3.1"
