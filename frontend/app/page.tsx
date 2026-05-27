@@ -15,6 +15,7 @@ import {
   Roadmap,
   FAQ,
   CTASection,
+  ContributeSection,
   OpenSourceBanner,
   BackToTop,
   Footer,
