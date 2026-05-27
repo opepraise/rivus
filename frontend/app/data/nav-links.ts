@@ -12,4 +12,5 @@ export const navLinks: NavLink[] = [
   { href: "#security-heading",     label: "Security" },
   { href: "#roadmap-heading",      label: "Roadmap" },
   { href: "#faq-heading",          label: "FAQ" },
+  { href: "#contribute-heading",   label: "Contribute" },
 ];
