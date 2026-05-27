@@ -129,6 +129,7 @@ The Next.js landing page runs at `http://localhost:3000`. Set `NEXT_PUBLIC_BASE_
 - Token transfers use `tx-sender` to prevent unauthorized spending
 - Auth check runs before vault lookup in release/refund functions (defense-in-depth)
 - Minimum stream amount (10,000 uSTX) and minimum duration (10 blocks) prevent dust spam
+- Maximum stream amount (1,000,000,000,000 uSTX) is enforced in both `open-stream` and `top-up-stream` — the guard on `top-up-stream` checks the post-top-up total, not just the top-up increment, so cumulative top-ups cannot silently breach the ceiling
 
 ## License
 
