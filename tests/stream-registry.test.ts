@@ -606,14 +606,15 @@ describe("stream-registry withdrawal flow", () => {
     expect(result).toBeOk(Cl.uint(0));
   });
 
-  it("withdrawn field increases after successful withdrawal", () => {
+  it("get-stream-remaining decreases after a successful withdrawal", () => {
     setupVault();
     openStream();
     simnet.mineEmptyBlocks(START_OFFSET + 10);
+    const { result: before } = simnet.callReadOnlyFn("stream-registry", "get-stream-remaining", [Cl.uint(0)], deployer);
     simnet.callPublicFn("stream-registry", "withdraw-from-stream", [Cl.uint(0)], wallet2);
-    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream", [Cl.uint(0)], deployer);
-    const stream = (result as any).value.value;
-    expect(stream.withdrawn.value).toBeGreaterThan(0n);
+    const { result: after } = simnet.callReadOnlyFn("stream-registry", "get-stream-remaining", [Cl.uint(0)], deployer);
+    expect(before).toBeOk(Cl.uint(STREAM_AMOUNT));
+    expect(after).toBeOk(Cl.uint(STREAM_AMOUNT - 12 * (STREAM_AMOUNT / DURATION)));
   });
 
   it("get-withdrawable-amount is positive after blocks advance past start", () => {
