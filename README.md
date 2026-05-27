@@ -30,6 +30,14 @@ npm install
 npm test
 ```
 
+### Test commands
+
+| Command | Purpose |
+|---|---|
+| `npm test` | Run all unit tests |
+| `npm run test:report` | Run tests with coverage and cost reports |
+| `npm run test:watch` | Watch mode — re-runs on file changes |
+
 ## Stream Lifecycle
 
 ```
