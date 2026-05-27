@@ -230,6 +230,15 @@ describe("stream-factory estimate-vesting-cost", () => {
 });
 
 describe("stream-factory payroll stream structure", () => {
+  it("create-payroll-stream with zero months returns ERR-MIN-AMOUNT not ERR-INVALID-BLOCKS", () => {
+    simnet.callPublicFn("stream-vault", "set-registry",
+      [Cl.principal(`${deployer}.stream-registry`)], deployer);
+    const start = simnet.blockHeight + 2;
+    const { result } = simnet.callPublicFn("stream-factory", "create-payroll-stream",
+      [Cl.principal(wallet2), Cl.uint(50_000), Cl.uint(0), Cl.uint(start)], wallet1);
+    expect(result).toBeErr(Cl.uint(404));
+  });
+
   it("create-payroll-stream total-amount equals monthly-amount times months", () => {
     simnet.callPublicFn("stream-vault", "set-registry",
       [Cl.principal(`${deployer}.stream-registry`)], deployer);
