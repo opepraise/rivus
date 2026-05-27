@@ -596,6 +596,16 @@ describe("stream-registry max-amount enforcement: top-up-stream", () => {
     expect(result).toBeErr(Cl.uint(313));
   });
 
+});
+
+describe("stream-registry withdrawal flow", () => {
+  it("get-withdrawable-amount returns 0 before stream start block", () => {
+    setupVault();
+    openStream();
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-withdrawable-amount", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(0));
+  });
+
   it("multiple valid top-ups accumulate total-amount correctly", () => {
     setupVault();
     openStream(wallet1, wallet2, STREAM_AMOUNT);
