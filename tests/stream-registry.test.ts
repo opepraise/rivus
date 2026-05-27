@@ -585,3 +585,14 @@ describe("stream-registry max-amount enforcement: open-stream", () => {
     expect(result).toBeOk(Cl.uint(1_000_000_000_000));
   });
 });
+
+describe("stream-registry max-amount enforcement: top-up-stream", () => {
+  it("top-up rejected when new total would exceed MAX_STREAM_AMOUNT", () => {
+    setupVault();
+    openStream(wallet1, wallet2, STREAM_AMOUNT);
+    const overflowAmount = 1_000_000_000_000 - STREAM_AMOUNT + 1;
+    const { result } = simnet.callPublicFn("stream-registry", "top-up-stream",
+      [Cl.uint(0), Cl.uint(overflowAmount)], wallet1);
+    expect(result).toBeErr(Cl.uint(313));
+  });
+});
