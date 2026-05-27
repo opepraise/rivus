@@ -609,6 +609,14 @@ describe("stream-registry withdrawal flow", () => {
 });
 
 describe("stream-registry cancel stream correctness", () => {
+  it("is-stream-active returns false after stream end-block passes", () => {
+    setupVault();
+    openStream();
+    simnet.mineEmptyBlocks(START_OFFSET + DURATION + 5);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "is-stream-active", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.bool(false));
+  });
+
   it("cancel-stream mid-stream pays the recipient their earned portion", () => {
     setupVault();
     openStream();
