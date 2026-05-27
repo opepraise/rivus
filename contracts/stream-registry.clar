@@ -86,6 +86,7 @@
   )
     (asserts! (not (is-eq tx-sender recipient)) ERR-SELF-STREAM)
     (asserts! (>= total-amount MIN_STREAM_AMOUNT) ERR-MIN-AMOUNT)
+    (asserts! (<= total-amount MAX_STREAM_AMOUNT) ERR-MAX-AMOUNT)
     (asserts! (>= duration MIN_STREAM_DURATION) ERR-INVALID-BLOCKS)
     (asserts! (> rate u0) ERR-INVALID-BLOCKS)
     (try! (contract-call? .stream-vault lock-stream-funds stream-id total-amount tx-sender))
