@@ -563,4 +563,12 @@ describe("stream-registry max-amount enforcement: open-stream", () => {
       [Cl.principal(wallet2), Cl.uint(STREAM_AMOUNT), Cl.uint(start), Cl.uint(start + DURATION)], wallet1);
     expect(result).toBeOk(Cl.uint(0));
   });
+
+  it("open-stream succeeds at exactly MIN_STREAM_AMOUNT lower bound", () => {
+    setupVault();
+    const start = simnet.blockHeight + START_OFFSET;
+    const { result } = simnet.callPublicFn("stream-registry", "open-stream",
+      [Cl.principal(wallet2), Cl.uint(10_000), Cl.uint(start), Cl.uint(start + DURATION)], wallet1);
+    expect(result).toBeOk(Cl.uint(0));
+  });
 });
