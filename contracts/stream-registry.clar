@@ -208,6 +208,7 @@
     (asserts! (not (get is-cancelled stream)) ERR-STREAM-CANCELLED)
     (asserts! (not (get is-completed stream)) ERR-STREAM-COMPLETED)
     (asserts! (>= amount MIN_STREAM_AMOUNT) ERR-MIN-AMOUNT)
+    (asserts! (<= new-total MAX_STREAM_AMOUNT) ERR-MAX-AMOUNT)
     (try! (contract-call? .stream-vault top-up-stream-funds stream-id amount tx-sender))
     (map-set streams stream-id (merge stream {
       total-amount: new-total,
