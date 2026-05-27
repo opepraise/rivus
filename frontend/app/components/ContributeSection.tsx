@@ -23,7 +23,7 @@ const ways = [
 
 export function ContributeSection() {
   return (
-    <section aria-labelledby="contribute-heading" className="space-y-6">
+    <section aria-labelledby="contribute-heading" className="space-y-6 scroll-mt-16">
       <div>
         <h2 id="contribute-heading" className="text-2xl font-semibold text-white">
           Contribute
