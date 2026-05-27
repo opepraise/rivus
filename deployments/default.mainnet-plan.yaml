@@ -25,6 +25,7 @@ plan:
             path: contracts/rvus-token.clar
             anchor-block-only: true
             clarity-version: 3
+
         - contract-publish:
             contract-name: stream-vault
             expected-sender: SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
@@ -32,6 +33,7 @@ plan:
             path: contracts/stream-vault.clar
             anchor-block-only: true
             clarity-version: 3
+
         - contract-publish:
             contract-name: stream-registry
             expected-sender: SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
@@ -39,6 +41,7 @@ plan:
             path: contracts/stream-registry.clar
             anchor-block-only: true
             clarity-version: 3
+
         - contract-publish:
             contract-name: stream-factory
             expected-sender: SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R
