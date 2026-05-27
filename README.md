@@ -82,6 +82,38 @@ npm run dev
 
 The Next.js landing page runs at `http://localhost:3000`. Set `NEXT_PUBLIC_BASE_URL` in `frontend/.env` for a custom canonical URL.
 
+## Error Code Reference
+
+| Code | Constant | Contract | Description |
+|---|---|---|---|
+| u100 | `ERR-NOT-AUTHORIZED` | `rvus-token` | Caller is not the owner |
+| u101 | `ERR-NOT-TOKEN-OWNER` | `rvus-token` | tx-sender is not the token holder |
+| u102 | `ERR-INSUFFICIENT-BALANCE` | `rvus-token` | Transfer amount exceeds balance |
+| u103 | `ERR-ZERO-AMOUNT` | `rvus-token` | Amount must be greater than zero |
+| u200 | `ERR-NOT-AUTHORIZED` | `stream-vault` | Caller is not the registry |
+| u201 | `ERR-ZERO-AMOUNT` | `stream-vault` | Amount must be greater than zero |
+| u202 | `ERR-INSUFFICIENT-BALANCE` | `stream-vault` | Vault balance too low |
+| u203 | `ERR-NO-VAULT` | `stream-vault` | No balance entry for stream ID |
+| u300 | `ERR-NOT-AUTHORIZED` | `stream-registry` | General auth failure |
+| u301 | `ERR-ZERO-AMOUNT` | `stream-registry` | Amount is zero |
+| u302 | `ERR-STREAM-NOT-FOUND` | `stream-registry` | Stream ID does not exist |
+| u303 | `ERR-NOT-RECIPIENT` | `stream-registry` | tx-sender is not the stream recipient |
+| u304 | `ERR-NOT-SENDER` | `stream-registry` | tx-sender is not the stream sender |
+| u305 | `ERR-STREAM-CANCELLED` | `stream-registry` | Stream is already cancelled |
+| u306 | `ERR-STREAM-COMPLETED` | `stream-registry` | Stream is already completed |
+| u307 | `ERR-STREAM-PAUSED` | `stream-registry` | Stream is paused |
+| u308 | `ERR-STREAM-NOT-PAUSED` | `stream-registry` | Stream is not paused |
+| u309 | `ERR-INVALID-BLOCKS` | `stream-registry` | Invalid block range or zero rate |
+| u310 | `ERR-NOTHING-TO-WITHDRAW` | `stream-registry` | No accrued balance to withdraw |
+| u311 | `ERR-MIN-AMOUNT` | `stream-registry` | Amount below 10,000 uSTX minimum |
+| u312 | `ERR-SELF-STREAM` | `stream-registry` | Sender and recipient are the same |
+| u313 | `ERR-MAX-AMOUNT` | `stream-registry` | Amount exceeds 1 trillion uSTX ceiling |
+| u400 | `ERR-NOT-AUTHORIZED` | `stream-factory` | Caller is not the owner |
+| u401 | `ERR-EMPTY-LIST` | `stream-factory` | Batch list is empty |
+| u402 | `ERR-ZERO-AMOUNT` | `stream-factory` | Amount is zero |
+| u403 | `ERR-INVALID-BLOCKS` | `stream-factory` | Invalid block duration |
+| u404 | `ERR-MIN-AMOUNT` | `stream-factory` | Amount below minimum |
+
 ## Security
 
 ### Authorization by contract
