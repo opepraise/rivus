@@ -17,6 +17,7 @@ On-chain payment streaming protocol on Stacks. Open a stream, and the recipient 
 | Parameter | Value |
 |---|---|
 | Minimum stream amount | 10,000 uSTX |
+| Maximum stream amount | 1,000,000,000,000 uSTX (1 trillion) |
 | Minimum stream duration | 10 blocks |
 | Blocks per month | 4,320 (~10 min/block) |
 | Rate precision | Per-block linear accrual |
@@ -70,6 +71,16 @@ Post-deploy setup:
 # Authorize stream-registry in the vault
 clarinet call stream-vault set-registry <stream-registry-address>
 ```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The Next.js landing page runs at `http://localhost:3000`. Set `NEXT_PUBLIC_BASE_URL` in `frontend/.env` for a custom canonical URL.
 
 ## Security
 
