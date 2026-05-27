@@ -126,6 +126,17 @@ describe("stream-vault direct release rejection", () => {
 });
 
 describe("stream-vault multi-stream accounting", () => {
+  it("vault stream-balance is zero after cancel-stream settles both parties", () => {
+    simnet.callPublicFn("stream-vault", "set-registry",
+      [Cl.principal(`${deployer}.stream-registry`)], deployer);
+    const start = simnet.blockHeight + 2;
+    simnet.callPublicFn("stream-registry", "open-stream",
+      [Cl.principal(wallet2), Cl.uint(100_000), Cl.uint(start), Cl.uint(start + 100)], wallet1);
+    simnet.callPublicFn("stream-registry", "cancel-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-vault", "get-stream-balance", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(0));
+  });
+
   it("vault total-locked decreases after a recipient withdrawal", () => {
     simnet.callPublicFn("stream-vault", "set-registry",
       [Cl.principal(`${deployer}.stream-registry`)], deployer);
