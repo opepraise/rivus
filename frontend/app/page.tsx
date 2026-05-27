@@ -45,6 +45,7 @@ export default function Home() {
         <Roadmap />
         <FAQ />
         <CTASection />
+        <ContributeSection />
         <OpenSourceBanner />
         <Footer />
       </main>
