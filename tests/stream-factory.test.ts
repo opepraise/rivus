@@ -92,6 +92,14 @@ describe("stream-factory", () => {
     const { result } = simnet.callReadOnlyFn("stream-factory", "get-total-batch-calls", [], deployer);
     expect(result).toBeOk(Cl.uint(1));
   });
+
+  it("total-batch-calls increments after create-vesting-stream", () => {
+    setupAll();
+    simnet.callPublicFn("stream-factory", "create-vesting-stream",
+      [Cl.principal(wallet2), Cl.uint(100_000), Cl.uint(10), Cl.uint(500)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-factory", "get-total-batch-calls", [], deployer);
+    expect(result).toBeOk(Cl.uint(1));
+  });
 });
 
 describe("stream-factory estimate-vesting-end", () => {
