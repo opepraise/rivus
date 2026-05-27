@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
+  # Run Clarity smart contract unit tests via Clarinet SDK + Vitest
   contract-tests:
     runs-on: ubuntu-latest
     steps:
