@@ -606,6 +606,32 @@ describe("stream-registry withdrawal flow", () => {
     expect(result).toBeOk(Cl.uint(0));
   });
 
+});
+
+describe("stream-registry pause and resume state tracking", () => {
+  it("pause-block field stores the block at which pause was called", () => {
+    setupVault();
+    openStream();
+    const pauseHeight = simnet.blockHeight + 1;
+    simnet.callPublicFn("stream-registry", "pause-stream", [Cl.uint(0)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.some(Cl.tuple({
+      sender: Cl.principal(wallet1),
+      recipient: Cl.principal(wallet2),
+      "total-amount": Cl.uint(STREAM_AMOUNT),
+      withdrawn: Cl.uint(0),
+      "is-paused": Cl.bool(true),
+      "is-cancelled": Cl.bool(false),
+      "is-completed": Cl.bool(false),
+      "paused-duration": Cl.uint(0),
+      "pause-block": Cl.uint(pauseHeight),
+      "rate-per-block": Cl.uint(STREAM_AMOUNT / DURATION),
+      "start-block": Cl.uint(simnet.blockHeight - 2 + START_OFFSET),
+      "end-block": Cl.uint(simnet.blockHeight - 2 + START_OFFSET + DURATION),
+      "last-withdraw-block": Cl.uint(simnet.blockHeight - 2 + START_OFFSET),
+    })));
+  });
+
   it("vault stream-balance drops to zero when stream is fully withdrawn", () => {
     setupVault();
     openStream();
