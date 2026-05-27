@@ -230,6 +230,18 @@ describe("stream-factory estimate-vesting-cost", () => {
 });
 
 describe("stream-factory payroll stream structure", () => {
+  it("create-payroll-stream total-amount equals monthly-amount times months", () => {
+    simnet.callPublicFn("stream-vault", "set-registry",
+      [Cl.principal(`${deployer}.stream-registry`)], deployer);
+    const monthlyAmount = 30_000;
+    const months = 3;
+    const start = simnet.blockHeight + 2;
+    simnet.callPublicFn("stream-factory", "create-payroll-stream",
+      [Cl.principal(wallet2), Cl.uint(monthlyAmount), Cl.uint(months), Cl.uint(start)], wallet1);
+    const { result } = simnet.callReadOnlyFn("stream-registry", "get-stream-remaining", [Cl.uint(0)], deployer);
+    expect(result).toBeOk(Cl.uint(monthlyAmount * months));
+  });
+
   it("create-vesting-stream duration equals the vesting-blocks argument", () => {
     simnet.callPublicFn("stream-vault", "set-registry",
       [Cl.principal(`${deployer}.stream-registry`)], deployer);
