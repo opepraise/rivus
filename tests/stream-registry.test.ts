@@ -606,6 +606,15 @@ describe("stream-registry withdrawal flow", () => {
     expect(result).toBeOk(Cl.uint(0));
   });
 
+  it("second withdraw in same block returns err nothing-to-withdraw", () => {
+    setupVault();
+    openStream();
+    simnet.mineEmptyBlocks(START_OFFSET + 10);
+    simnet.callPublicFn("stream-registry", "withdraw-from-stream", [Cl.uint(0)], wallet2);
+    const { result } = simnet.callPublicFn("stream-registry", "withdraw-from-stream", [Cl.uint(0)], wallet2);
+    expect(result).toBeErr(Cl.uint(310));
+  });
+
   it("withdraw-from-stream returns the earned amount", () => {
     setupVault();
     openStream();
