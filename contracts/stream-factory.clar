@@ -9,7 +9,6 @@
 (define-constant BLOCKS_PER_WEEK u1080)
 (define-constant BLOCKS_PER_DAY u144)
 
-(define-data-var contract-owner principal tx-sender)
 (define-data-var total-batch-calls uint u0)
 (define-data-var total-factory-streams uint u0)
 
