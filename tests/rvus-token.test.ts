@@ -171,4 +171,11 @@ describe("rvus-token protocol-burn", () => {
       [Cl.uint(200_000), Cl.principal(wallet1)], wallet1);
     expect(result).toBeErr(Cl.uint(100));
   });
+
+  it("rejects zero-amount protocol-burn", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(500_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callPublicFn("rvus-token", "protocol-burn",
+      [Cl.uint(0), Cl.principal(wallet1)], deployer);
+    expect(result).toBeErr(Cl.uint(103));
+  });
 });
