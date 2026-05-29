@@ -156,3 +156,61 @@ describe("rvus-token supply tracking", () => {
     expect(result).toBeOk(Cl.uint(500_000));
   });
 });
+
+describe("rvus-token protocol-burn", () => {
+  it("minter can protocol-burn tokens", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(500_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callPublicFn("rvus-token", "protocol-burn",
+      [Cl.uint(200_000), Cl.principal(wallet1)], deployer);
+    expect(result).toBeOk(Cl.bool(true));
+  });
+
+  it("non-minter cannot protocol-burn", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(500_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callPublicFn("rvus-token", "protocol-burn",
+      [Cl.uint(200_000), Cl.principal(wallet1)], wallet1);
+    expect(result).toBeErr(Cl.uint(100));
+  });
+
+  it("rejects zero-amount protocol-burn", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(500_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callPublicFn("rvus-token", "protocol-burn",
+      [Cl.uint(0), Cl.principal(wallet1)], deployer);
+    expect(result).toBeErr(Cl.uint(103));
+  });
+
+  it("protocol-burn reduces the owner balance", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(1_000_000), Cl.principal(wallet1)], deployer);
+    simnet.callPublicFn("rvus-token", "protocol-burn",
+      [Cl.uint(300_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callReadOnlyFn("rvus-token", "get-balance",
+      [Cl.principal(wallet1)], deployer);
+    expect(result).toBeOk(Cl.uint(700_000));
+  });
+
+  it("protocol-burn reduces total supply", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(1_000_000), Cl.principal(wallet1)], deployer);
+    simnet.callPublicFn("rvus-token", "protocol-burn",
+      [Cl.uint(400_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callReadOnlyFn("rvus-token", "get-total-supply", [], deployer);
+    expect(result).toBeOk(Cl.uint(600_000));
+  });
+
+  it("protocol-burn fails when balance is insufficient", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(100_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callPublicFn("rvus-token", "protocol-burn",
+      [Cl.uint(200_000), Cl.principal(wallet1)], deployer);
+    expect(result).toBeErr(Cl.uint(1));
+  });
+
+  it("protocol-burn all tokens leaves zero balance and supply", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(500_000), Cl.principal(wallet1)], deployer);
+    simnet.callPublicFn("rvus-token", "protocol-burn",
+      [Cl.uint(500_000), Cl.principal(wallet1)], deployer);
+    const { result: balance } = simnet.callReadOnlyFn("rvus-token", "get-balance",
+      [Cl.principal(wallet1)], deployer);
+    const { result: supply } = simnet.callReadOnlyFn("rvus-token", "get-total-supply", [], deployer);
+    expect(balance).toBeOk(Cl.uint(0));
+    expect(supply).toBeOk(Cl.uint(0));
+  });
+});
