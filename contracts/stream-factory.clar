@@ -1,9 +1,6 @@
 ;; Rivus Stream Factory
 ;; Batch stream helpers for payroll, vesting, and group distributions
 
-(define-constant ERR-NOT-AUTHORIZED (err u400))
-(define-constant ERR-EMPTY-LIST (err u401))
-(define-constant ERR-ZERO-AMOUNT (err u402))
 (define-constant ERR-INVALID-BLOCKS (err u403))
 (define-constant ERR-MIN-AMOUNT (err u404))
 
