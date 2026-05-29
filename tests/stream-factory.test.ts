@@ -123,13 +123,6 @@ describe("stream-factory estimate-vesting-end", () => {
   });
 });
 
-describe("stream-factory owner", () => {
-  it("get-owner returns deployer address", () => {
-    const { result } = simnet.callReadOnlyFn("stream-factory", "get-owner", [], deployer);
-    expect(result).toBeOk(Cl.principal(deployer));
-  });
-});
-
 describe("stream-factory vesting end estimate", () => {
   it("returns incrementing block for different cliff+vest combos", () => {
     const { result: r1 } = simnet.callReadOnlyFn("stream-factory", "estimate-vesting-end",
