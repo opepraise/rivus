@@ -195,4 +195,11 @@ describe("rvus-token protocol-burn", () => {
     const { result } = simnet.callReadOnlyFn("rvus-token", "get-total-supply", [], deployer);
     expect(result).toBeOk(Cl.uint(600_000));
   });
+
+  it("protocol-burn fails when balance is insufficient", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(100_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callPublicFn("rvus-token", "protocol-burn",
+      [Cl.uint(200_000), Cl.principal(wallet1)], deployer);
+    expect(result).toBeErr(Cl.uint(1));
+  });
 });
