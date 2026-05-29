@@ -110,9 +110,6 @@ The Next.js landing page runs at `http://localhost:3000`. Set `NEXT_PUBLIC_BASE_
 | u311 | `ERR-MIN-AMOUNT` | `stream-registry` | Amount below 10,000 uSTX minimum |
 | u312 | `ERR-SELF-STREAM` | `stream-registry` | Sender and recipient are the same |
 | u313 | `ERR-MAX-AMOUNT` | `stream-registry` | Amount exceeds 1 trillion uSTX ceiling |
-| u400 | `ERR-NOT-AUTHORIZED` | `stream-factory` | Caller is not the owner |
-| u401 | `ERR-EMPTY-LIST` | `stream-factory` | Batch list is empty |
-| u402 | `ERR-ZERO-AMOUNT` | `stream-factory` | Amount is zero |
 | u403 | `ERR-INVALID-BLOCKS` | `stream-factory` | Invalid block duration |
 | u404 | `ERR-MIN-AMOUNT` | `stream-factory` | Amount below minimum |
 
