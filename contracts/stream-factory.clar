@@ -12,6 +12,10 @@
 (define-data-var total-batch-calls uint u0)
 (define-data-var total-factory-streams uint u0)
 
+(define-read-only (fetch-min-stream-amount)
+  (contract-call? .stream-registry get-min-stream-amount)
+)
+
 (define-public (create-payroll-stream
   (recipient principal)
   (monthly-amount uint)
