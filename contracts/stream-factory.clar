@@ -79,8 +79,8 @@
 )
 
 (define-read-only (estimate-weekly-cost (weekly-amount uint) (weeks uint))
-  (match (fetch-min-stream-amount)
-    min-amount (if (and (>= (* weekly-amount weeks) min-amount) (> weeks u0))
+  (let ((min-amount (unwrap-panic (fetch-min-stream-amount))))
+    (if (and (>= (* weekly-amount weeks) min-amount) (> weeks u0))
       (ok {
         total-amount: (* weekly-amount weeks),
         total-blocks: (* weeks BLOCKS_PER_WEEK),
@@ -89,7 +89,6 @@
       })
       ERR-MIN-AMOUNT
     )
-    ERR-MIN-AMOUNT
   )
 )
 
@@ -98,8 +97,8 @@
 )
 
 (define-read-only (estimate-vesting-cost (total-amount uint) (cliff-blocks uint) (vesting-blocks uint))
-  (match (fetch-min-stream-amount)
-    min-amount (if (and (>= total-amount min-amount) (> vesting-blocks u0))
+  (let ((min-amount (unwrap-panic (fetch-min-stream-amount))))
+    (if (and (>= total-amount min-amount) (> vesting-blocks u0))
       (ok {
         total-amount: total-amount,
         cliff-blocks: cliff-blocks,
@@ -109,6 +108,5 @@
       })
       ERR-MIN-AMOUNT
     )
-    ERR-MIN-AMOUNT
   )
 )
