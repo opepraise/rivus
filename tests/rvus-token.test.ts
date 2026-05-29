@@ -178,4 +178,13 @@ describe("rvus-token protocol-burn", () => {
       [Cl.uint(0), Cl.principal(wallet1)], deployer);
     expect(result).toBeErr(Cl.uint(103));
   });
+
+  it("protocol-burn reduces the owner balance", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(1_000_000), Cl.principal(wallet1)], deployer);
+    simnet.callPublicFn("rvus-token", "protocol-burn",
+      [Cl.uint(300_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callReadOnlyFn("rvus-token", "get-balance",
+      [Cl.principal(wallet1)], deployer);
+    expect(result).toBeOk(Cl.uint(700_000));
+  });
 });
