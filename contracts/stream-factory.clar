@@ -4,7 +4,6 @@
 (define-constant ERR-INVALID-BLOCKS (err u403))
 (define-constant ERR-MIN-AMOUNT (err u404))
 
-(define-constant MIN_STREAM_AMOUNT u10000)
 (define-constant BLOCKS_PER_MONTH u4320)
 (define-constant BLOCKS_PER_WEEK u1080)
 (define-constant BLOCKS_PER_DAY u144)
@@ -75,7 +74,9 @@
 (define-read-only (get-blocks-per-day) (ok BLOCKS_PER_DAY))
 (define-read-only (get-total-batch-calls) (ok (var-get total-batch-calls)))
 (define-read-only (get-total-factory-streams) (ok (var-get total-factory-streams)))
-(define-read-only (get-min-stream-amount) (ok MIN_STREAM_AMOUNT))
+(define-read-only (get-min-stream-amount)
+  (fetch-min-stream-amount)
+)
 
 (define-read-only (estimate-weekly-cost (weekly-amount uint) (weeks uint))
   (match (fetch-min-stream-amount)
