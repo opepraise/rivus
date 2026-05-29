@@ -97,14 +97,17 @@
 )
 
 (define-read-only (estimate-vesting-cost (total-amount uint) (cliff-blocks uint) (vesting-blocks uint))
-  (if (and (>= total-amount MIN_STREAM_AMOUNT) (> vesting-blocks u0))
-    (ok {
-      total-amount: total-amount,
-      cliff-blocks: cliff-blocks,
-      vesting-blocks: vesting-blocks,
-      rate-per-block: (/ total-amount vesting-blocks),
-      total-blocks: (+ cliff-blocks vesting-blocks)
-    })
+  (match (fetch-min-stream-amount)
+    min-amount (if (and (>= total-amount min-amount) (> vesting-blocks u0))
+      (ok {
+        total-amount: total-amount,
+        cliff-blocks: cliff-blocks,
+        vesting-blocks: vesting-blocks,
+        rate-per-block: (/ total-amount vesting-blocks),
+        total-blocks: (+ cliff-blocks vesting-blocks)
+      })
+      ERR-MIN-AMOUNT
+    )
     ERR-MIN-AMOUNT
   )
 )
