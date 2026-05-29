@@ -87,10 +87,6 @@
   (ok (+ stacks-block-height cliff-blocks vesting-blocks))
 )
 
-(define-read-only (get-owner)
-  (ok (var-get contract-owner))
-)
-
 (define-read-only (estimate-vesting-cost (total-amount uint) (cliff-blocks uint) (vesting-blocks uint))
   (if (and (>= total-amount MIN_STREAM_AMOUNT) (> vesting-blocks u0))
     (ok {
