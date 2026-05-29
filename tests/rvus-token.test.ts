@@ -156,3 +156,12 @@ describe("rvus-token supply tracking", () => {
     expect(result).toBeOk(Cl.uint(500_000));
   });
 });
+
+describe("rvus-token protocol-burn", () => {
+  it("minter can protocol-burn tokens", () => {
+    simnet.callPublicFn("rvus-token", "mint", [Cl.uint(500_000), Cl.principal(wallet1)], deployer);
+    const { result } = simnet.callPublicFn("rvus-token", "protocol-burn",
+      [Cl.uint(200_000), Cl.principal(wallet1)], deployer);
+    expect(result).toBeOk(Cl.bool(true));
+  });
+});
