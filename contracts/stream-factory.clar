@@ -78,13 +78,16 @@
 (define-read-only (get-min-stream-amount) (ok MIN_STREAM_AMOUNT))
 
 (define-read-only (estimate-weekly-cost (weekly-amount uint) (weeks uint))
-  (if (and (>= (* weekly-amount weeks) MIN_STREAM_AMOUNT) (> weeks u0))
-    (ok {
-      total-amount: (* weekly-amount weeks),
-      total-blocks: (* weeks BLOCKS_PER_WEEK),
-      rate-per-block: (/ (* weekly-amount weeks) (* weeks BLOCKS_PER_WEEK)),
-      weeks: weeks
-    })
+  (match (fetch-min-stream-amount)
+    min-amount (if (and (>= (* weekly-amount weeks) min-amount) (> weeks u0))
+      (ok {
+        total-amount: (* weekly-amount weeks),
+        total-blocks: (* weeks BLOCKS_PER_WEEK),
+        rate-per-block: (/ (* weekly-amount weeks) (* weeks BLOCKS_PER_WEEK)),
+        weeks: weeks
+      })
+      ERR-MIN-AMOUNT
+    )
     ERR-MIN-AMOUNT
   )
 )
