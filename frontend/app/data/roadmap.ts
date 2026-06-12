@@ -23,14 +23,14 @@ export const roadmapItems: RoadmapItem[] = [
     status: "done",
   },
   {
-    title: "Third-party audit",
-    desc: "Formal security audit of all Clarity contracts before mainnet launch.",
-    status: "planned",
-  },
-  {
     title: "Mainnet deployment",
     desc: "All five contracts live on Stacks mainnet under SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R.",
     status: "done",
+  },
+  {
+    title: "Third-party audit",
+    desc: "Formal security audit of all Clarity contracts before mainnet launch.",
+    status: "planned",
   },
   {
     title: "Governance module",
