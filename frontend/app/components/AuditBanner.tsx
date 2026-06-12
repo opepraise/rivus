@@ -10,7 +10,7 @@ export function AuditBanner() {
         ⚠
       </span>
       <p className="text-sm text-yellow-200/80 leading-relaxed">
-        <strong className="font-semibold text-yellow-300">Pre-audit software.</strong>{" "}
+        <strong className="font-semibold text-yellow-300">Unaudited software.</strong>{" "}
         Rivus contracts have not yet undergone a formal security audit. Testnet deployment
         is in progress — mainnet launch follows a third-party audit. Do not use with
         funds you cannot afford to lose.{" "}
