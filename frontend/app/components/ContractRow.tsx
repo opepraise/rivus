@@ -1,12 +1,12 @@
 interface ContractRowProps {
   name: string;
   role: string;
-  address?: string;
-  explorerUrl?: string;
+  address: string;
+  explorerUrl: string;
   isLast?: boolean;
 }
 
-export function ContractRow({ name, role, isLast = false }: ContractRowProps) {
+export function ContractRow({ name, role, address, explorerUrl, isLast = false }: ContractRowProps) {
   return (
     <div
       role="row"
