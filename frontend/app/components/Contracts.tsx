@@ -21,6 +21,7 @@ export function Contracts() {
               key={c.name}
               name={c.name}
               role={c.role}
+              address={c.address}
               isLast={i === contracts.length - 1}
             />
           ))}
