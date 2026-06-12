@@ -100,7 +100,7 @@ npm install
 npm run dev
 ```
 
-The Next.js landing page runs at `http://localhost:3000`. Set `NEXT_PUBLIC_BASE_URL` in `frontend/.env` for a custom canonical URL.
+The Next.js landing page runs at `http://localhost:3000`. Set `NEXT_PUBLIC_BASE_URL` in `frontend/.env` for a custom canonical URL (used by Vercel in production).
 
 ## Error Code Reference
 
