@@ -26,6 +26,7 @@ export function ContractRow({ name, role, address, explorerUrl, isLast = false }
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs font-mono text-[#475569] hover:text-[#818cf8] transition-colors truncate focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818cf8] rounded"
+          aria-label={`View ${name} on Hiro Explorer (opens in new tab)`}
         >
           {address}
         </a>
