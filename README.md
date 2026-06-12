@@ -14,6 +14,8 @@ On-chain payment streaming protocol on Stacks. Open a stream, and the recipient 
 
 ## Deployed Contracts (Mainnet)
 
+All contracts are live on Stacks mainnet.
+
 ## Key Parameters
 
 | Parameter | Value |
