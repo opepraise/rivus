@@ -11,7 +11,7 @@ On-chain payment streaming protocol on Stacks. Open a stream, and the recipient 
 | `rvus-token` | RVUS — the protocol native token (SIP-010) |
 | `stream-vault` | Custodian for streamed STX; only the registry can move funds |
 | `stream-registry` | Core registry: open, withdraw, cancel, pause, resume, top-up |
-| `stream-factory` | Batch helpers: payroll schedules and vesting streams |
+| `stream-factory` | Batch helpers for payroll schedules and vesting streams |
 
 ## Deployed Contracts (Mainnet)
 
