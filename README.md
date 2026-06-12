@@ -34,6 +34,7 @@ All five contracts are live on Stacks mainnet under deployer `SP3TZAPPW443JF9F7K
 | Minimum stream duration | 10 blocks |
 | Blocks per month | 4,320 (~10 min/block) |
 | Rate precision | Per-block linear accrual |
+| Network | Stacks mainnet (Clarity 3, epoch 3.1) |
 
 ## Getting Started
 
