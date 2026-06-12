@@ -19,7 +19,17 @@ export function ContractRow({ name, role, address, explorerUrl, isLast = false }
       >
         {name}
       </code>
-      <p role="cell" className="text-sm text-[#94a3b8]">{role}</p>
+      <div role="cell" className="flex flex-col gap-1 min-w-0">
+        <p className="text-sm text-[#94a3b8]">{role}</p>
+        <a
+          href={explorerUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs font-mono text-[#475569] hover:text-[#818cf8] transition-colors truncate focus:outline-none focus-visible:ring-2 focus-visible:ring-[#818cf8] rounded"
+        >
+          {address}
+        </a>
+      </div>
     </div>
   );
 }
