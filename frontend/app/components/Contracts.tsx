@@ -8,7 +8,7 @@ export function Contracts() {
       <SectionHeading
         id="contracts-heading"
         title="Contracts"
-        subtitle="Five Clarity contracts on Stacks (Clarity 3, epoch 3.1)."
+        subtitle="Five Clarity contracts live on Stacks mainnet (Clarity 3, epoch 3.1)."
       />
       <div
         role="table"
