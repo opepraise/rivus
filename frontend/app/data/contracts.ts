@@ -4,6 +4,7 @@ export interface Contract {
   name: string;
   role: string;
   address?: string;
+  explorerUrl?: string;
 }
 
 export const contracts: Contract[] = [
