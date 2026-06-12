@@ -20,7 +20,7 @@ export const roadmapItems: RoadmapItem[] = [
   {
     title: "Testnet deployment",
     desc: "Deploy all contracts to Stacks testnet and publish addresses.",
-    status: "in-progress",
+    status: "done",
   },
   {
     title: "Third-party audit",
