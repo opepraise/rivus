@@ -29,7 +29,7 @@ export const roadmapItems: RoadmapItem[] = [
   },
   {
     title: "Mainnet deployment",
-    desc: "Production deployment with verified contract addresses on Stacks mainnet.",
+    desc: "All five contracts live on Stacks mainnet under SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R.",
     status: "done",
   },
   {
