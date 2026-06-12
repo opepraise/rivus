@@ -76,6 +76,8 @@ clarinet call stream-factory create-vesting-stream <beneficiary> <total> <cliff-
 
 ## Deployment
 
+Contracts are already deployed to mainnet (see above). To deploy to another network:
+
 ```bash
 ./scripts/deploy.sh testnet
 ```
