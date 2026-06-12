@@ -30,7 +30,7 @@ export const roadmapItems: RoadmapItem[] = [
   {
     title: "Mainnet deployment",
     desc: "Production deployment with verified contract addresses on Stacks mainnet.",
-    status: "planned",
+    status: "done",
   },
   {
     title: "Governance module",
