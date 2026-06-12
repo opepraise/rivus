@@ -12,6 +12,8 @@ On-chain payment streaming protocol on Stacks. Open a stream, and the recipient 
 | `stream-registry` | Core: open / withdraw / cancel / pause / resume / top-up streams |
 | `stream-factory` | Batch helpers: payroll schedules and vesting streams |
 
+## Deployed Contracts (Mainnet)
+
 ## Key Parameters
 
 | Parameter | Value |
