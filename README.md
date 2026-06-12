@@ -22,6 +22,7 @@ All contracts are live on Stacks mainnet under deployer `SP3TZAPPW443JF9F7K5T0MR
 | `rvus-token` | [`SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R.rvus-token`](https://explorer.hiro.so/txid/SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R.rvus-token?chain=mainnet) |
 | `stream-vault` | [`SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R.stream-vault`](https://explorer.hiro.so/txid/SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R.stream-vault?chain=mainnet) |
 | `stream-registry` | [`SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R.stream-registry`](https://explorer.hiro.so/txid/SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R.stream-registry?chain=mainnet) |
+| `stream-factory` | [`SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R.stream-factory`](https://explorer.hiro.so/txid/SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R.stream-factory?chain=mainnet) |
 
 ## Key Parameters
 
