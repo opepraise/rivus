@@ -19,7 +19,7 @@ export function AuditBanner() {
           target="_blank"
           rel="noopener noreferrer"
           className="underline hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 rounded"
-          aria-label="Follow audit progress on GitHub (opens in new tab)"
+          aria-label="Track third-party audit progress on GitHub (opens in new tab)"
         >
           Follow audit progress on GitHub.
         </a>
