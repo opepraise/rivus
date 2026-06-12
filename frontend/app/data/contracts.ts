@@ -3,8 +3,8 @@ const OWNER = "SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R";
 export interface Contract {
   name: string;
   role: string;
-  address?: string;
-  explorerUrl?: string;
+  address: string;
+  explorerUrl: string;
 }
 
 export const contracts: Contract[] = [
