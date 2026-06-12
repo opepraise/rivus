@@ -20,7 +20,12 @@ export const contracts: Contract[] = [
     address: `${OWNER}.rvus-token`,
     explorerUrl: `https://explorer.hiro.so/txid/${OWNER}.rvus-token?chain=mainnet`,
   },
-  { name: "stream-vault",    role: "Holds STX for active streams; only registry can move funds" },
+  {
+    name: "stream-vault",
+    role: "Holds STX for active streams; only registry can move funds",
+    address: `${OWNER}.stream-vault`,
+    explorerUrl: `https://explorer.hiro.so/txid/${OWNER}.stream-vault?chain=mainnet`,
+  },
   { name: "stream-registry", role: "Open / withdraw / cancel / pause / resume / top-up streams" },
   { name: "stream-factory",  role: "Batch helpers: payroll schedules and vesting streams" },
 ];
