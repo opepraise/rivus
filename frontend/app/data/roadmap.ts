@@ -29,7 +29,7 @@ export const roadmapItems: RoadmapItem[] = [
   },
   {
     title: "Third-party audit",
-    desc: "Formal security audit of all Clarity contracts before mainnet launch.",
+    desc: "Formal security audit of all Clarity contracts.",
     status: "planned",
   },
   {
