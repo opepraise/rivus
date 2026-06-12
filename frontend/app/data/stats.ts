@@ -12,7 +12,7 @@ export const protocolStats: ProtocolStat[] = [
   },
   {
     label: "Test coverage",
-    value: "170+",
+    value: "176",
     desc: "Clarinet unit tests covering all public functions and edge cases",
   },
   {
