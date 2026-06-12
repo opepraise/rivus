@@ -2,6 +2,7 @@ interface ContractRowProps {
   name: string;
   role: string;
   address?: string;
+  explorerUrl?: string;
   isLast?: boolean;
 }
 
