@@ -86,6 +86,8 @@ Post-deploy setup:
 ```bash
 # Authorize stream-registry in the vault
 clarinet call stream-vault set-registry <stream-registry-address>
+# Authorize a minter for the token
+clarinet call rvus-token set-minter <minter-address>
 ```
 
 ### Frontend
