@@ -9,7 +9,7 @@ On-chain payment streaming protocol on Stacks. Open a stream, and the recipient 
 |---|---|
 | `sip010-trait` | SIP-010 fungible token interface — trait definition |
 | `rvus-token` | RVUS — the protocol native token (SIP-010) |
-| `stream-vault` | Holds STX for active streams; only registry can move funds |
+| `stream-vault` | Custodian for streamed STX; only the registry can move funds |
 | `stream-registry` | Core: open / withdraw / cancel / pause / resume / top-up streams |
 | `stream-factory` | Batch helpers: payroll schedules and vesting streams |
 
