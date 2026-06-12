@@ -14,7 +14,7 @@ On-chain payment streaming protocol on Stacks. Open a stream, and the recipient 
 
 ## Deployed Contracts (Mainnet)
 
-All contracts are live on Stacks mainnet under deployer `SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R`.
+All five contracts are live on Stacks mainnet under deployer `SP3TZAPPW443JF9F7K5T0MRKRJQGX2F9DMW0CRB4R`.
 
 | Contract | Address |
 |---|---|
