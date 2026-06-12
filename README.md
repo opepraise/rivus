@@ -152,7 +152,7 @@ MIT
 
 ## Interaction Script
 
-A multi-user interaction script is available at `/Users/mac/Documents/DEBY/stacks/interact-rivus.js`.
+A multi-user interaction script (`interact-rivus.js`) exercises all 5 contracts across multiple wallets.
 
 It sends 7 transactions per user per round across all 5 contracts, with a minimum of **10,000 uSTX** per stream interaction. Fill in `OWNER_KEY` before running:
 
