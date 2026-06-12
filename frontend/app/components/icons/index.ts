@@ -4,3 +4,4 @@ export * from "./ChevronDownIcon";
 export * from "./CopyIcon";
 export * from "./ExternalLinkIcon";
 export * from "./GitHubIcon";
+export * from "./ShieldIcon";
