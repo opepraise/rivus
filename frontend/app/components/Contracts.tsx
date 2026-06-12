@@ -22,6 +22,7 @@ export function Contracts() {
               name={c.name}
               role={c.role}
               address={c.address}
+              explorerUrl={c.explorerUrl}
               isLast={i === contracts.length - 1}
             />
           ))}
