@@ -32,5 +32,10 @@ export const contracts: Contract[] = [
     address: `${OWNER}.stream-registry`,
     explorerUrl: `https://explorer.hiro.so/txid/${OWNER}.stream-registry?chain=mainnet`,
   },
-  { name: "stream-factory",  role: "Batch helpers: payroll schedules and vesting streams" },
+  {
+    name: "stream-factory",
+    role: "Batch helpers: payroll schedules and vesting streams",
+    address: `${OWNER}.stream-factory`,
+    explorerUrl: `https://explorer.hiro.so/txid/${OWNER}.stream-factory?chain=mainnet`,
+  },
 ];
