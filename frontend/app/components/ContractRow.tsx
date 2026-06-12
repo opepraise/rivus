@@ -1,6 +1,7 @@
 interface ContractRowProps {
   name: string;
   role: string;
+  address?: string;
   isLast?: boolean;
 }
 
