@@ -1,6 +1,6 @@
 import { GitHubIcon } from "./icons";
 import { Badge } from "./Badge";
-import { GITHUB_URL, CONTRACTS_URL } from "../data";
+import { GITHUB_URL } from "../data";
 
 export function Hero() {
   return (
@@ -23,23 +23,23 @@ export function Hero() {
       </p>
       <div className="flex gap-4 pt-2 flex-wrap" role="group" aria-label="Primary actions">
         <a
+          href="/dashboard"
+          className="flex items-center gap-2 rounded-lg bg-(--accent) px-6 py-2.5 text-sm font-medium text-white hover:bg-[#4f46e5] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        >
+          Launch App
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
+        <a
           href={GITHUB_URL}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="View Rivus on GitHub (opens in new tab)"
-          className="flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black hover:bg-white/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
-        >
-          <GitHubIcon className="text-black" />
-          GitHub
-        </a>
-        <a
-          href={CONTRACTS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Browse smart contracts on GitHub (opens in new tab)"
           className="flex items-center gap-2 rounded-lg border border-(--border) px-5 py-2.5 text-sm font-medium text-(--foreground) hover:border-[#94a3b8] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
         >
-          View Contracts
+          <GitHubIcon className="text-white" />
+          GitHub
         </a>
       </div>
     </section>
