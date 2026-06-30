@@ -33,10 +33,16 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   const [address, setAddress] = useState<string | null>(null);
 
   useEffect(() => {
-    if (userSession.isSignInPending()) {
-      userSession.handlePendingSignIn().then(() => setAddress(getAddress()));
-    } else {
-      setAddress(getAddress());
+    try {
+      if (userSession.isSignInPending()) {
+        userSession.handlePendingSignIn()
+          .then(() => setAddress(getAddress()))
+          .catch(() => setAddress(null));
+      } else {
+        setAddress(getAddress());
+      }
+    } catch {
+      setAddress(null);
     }
   }, []);
 
