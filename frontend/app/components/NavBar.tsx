@@ -27,16 +27,24 @@ export function NavBar() {
           </li>
         ))}
       </ul>
-      <a
-        href={GITHUB_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="View Rivus on GitHub (opens in new tab)"
-        className="flex items-center gap-2 text-sm text-(--text-muted) hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) rounded"
-      >
-        <GitHubIcon />
-        <span className="hidden sm:inline">View on GitHub</span>
-      </a>
+      <div className="flex items-center gap-3">
+        <a
+          href={GITHUB_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View Rivus on GitHub (opens in new tab)"
+          className="hidden sm:flex items-center gap-2 text-sm text-(--text-muted) hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) rounded"
+        >
+          <GitHubIcon />
+          <span className="hidden lg:inline">GitHub</span>
+        </a>
+        <a
+          href="/dashboard"
+          className="rounded-lg bg-(--accent) px-4 py-2 text-sm font-medium text-white hover:bg-[#4f46e5] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        >
+          Launch App
+        </a>
+      </div>
     </nav>
   );
 }
